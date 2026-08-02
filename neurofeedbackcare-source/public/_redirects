@@ -1,0 +1,5 @@
+# Cloudflare Pages: dynamic routes are handled by the _worker.js (SSR).
+# Static assets under /assets, /brand, and /team are served as files.
+#
+# Optional host preference (enable ONE after DNS is live):
+# /www.neurofeedbackcare.com/*  https://neurofeedbackcare.com/:splat  301

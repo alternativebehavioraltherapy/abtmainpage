@@ -1,0 +1,9 @@
+# Cloudflare Pages — Alternative Behavioral Therapy
+# Project name can match your Pages project (change if you prefer).
+name = "neurofeedbackcare"
+compatibility_date = "2025-09-19"
+compatibility_flags = ["nodejs_compat"]
+pages_build_output_dir = "dist"
+
+# Free plan is enough for this marketing site.
+# Custom domain: neurofeedbackcare.com (connect in Cloudflare dashboard).
