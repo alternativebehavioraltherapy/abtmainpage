@@ -4,6 +4,7 @@ import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import viteReact from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import { nitro } from "nitro/vite";
+import netlify from "@netlify/vite-plugin-tanstack-start";
 
 /**
  * Finish PGLite bootstrap during dev-server setup (before traffic). Vite awaits
@@ -122,14 +123,18 @@ function authPopupPlugin(): Plugin {
 /**
  * Deployment target:
  * - default / platform: Vercel (nitro preset "vercel")
- * - Cloudflare Pages free hosting: DEPLOY_TARGET=cloudflare → preset "cloudflare_pages"
+ * - Cloudflare Pages: DEPLOY_TARGET=cloudflare → nitro "cloudflare_pages"
+ * - Netlify (primary free host for clinic demo): DEPLOY_TARGET=netlify
+ *   → official @netlify/vite-plugin-tanstack-start (no nitro)
  */
 const deployTarget = process.env.DEPLOY_TARGET || "vercel";
-const nitroPreset =
-  deployTarget === "cloudflare" ? "cloudflare_pages" : "vercel";
+const isNetlify = deployTarget === "netlify";
+const isCloudflare = deployTarget === "cloudflare";
+const nitroPreset = isCloudflare ? "cloudflare_pages" : "vercel";
 
 // `0.0.0.0:8080` is the live-preview contract — don't change host/port.
 // Keep `nitro` gated to `build` (enabled in dev it opens a second port).
+// Netlify uses the official plugin instead of nitro.
 export default defineConfig(({ command }) => ({
   server: {
     host: "0.0.0.0",
@@ -143,12 +148,14 @@ export default defineConfig(({ command }) => ({
     authPopupPlugin(),
     tailwindcss(),
     tanstackStart(),
-    ...(command === "build"
+    // Netlify: official TanStack Start plugin (SSR + static client assets)
+    ...(isNetlify ? [netlify()] : []),
+    // Vercel / Cloudflare: nitro only on production build
+    ...(command === "build" && !isNetlify
       ? [
           nitro({
             preset: nitroPreset,
-            // Cloudflare Pages: generate wrangler/pages deploy config
-            ...(deployTarget === "cloudflare"
+            ...(isCloudflare
               ? {
                   cloudflare: {
                     deployConfig: true,

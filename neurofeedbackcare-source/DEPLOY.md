@@ -1,206 +1,108 @@
-# Deploy Alternative Behavioral Therapy to Cloudflare Pages (free)
+# Deploy Alternative Behavioral Therapy (Netlify + optional Cloudflare)
 
 **Site:** neurofeedbackcare.com  
 **Business:** Alternative Behavioral Therapy, INC (Vancouver, WA)  
-**Hosting:** Cloudflare Pages (free tier)  
-**Domain registrar (today):** GoDaddy  
-**SSL:** Free, automatic via Cloudflare once the custom domain is connected  
+**Primary free host (demo / production):** **Netlify**  
+**Optional alternate host:** Cloudflare Pages  
+**Domain registrar (today):** GoDaddy — **do not change DNS until the demo looks right**  
+**SSL:** Free via Netlify (or Cloudflare) once a custom domain is connected  
 
-This marketing site is configured to build for **Cloudflare Pages**. You do **not** need GoDaddy Website Builder, Managed WordPress, or paid GoDaddy web hosting for the site itself. Keep GoDaddy for **domain registration** (and email if you use it there).
+This marketing site builds for **Netlify** (TanStack Start official plugin) or **Cloudflare Pages**.  
+You do **not** need GoDaddy Website Builder. Keep GoDaddy for **domain registration** (and email if used there).
 
 ---
 
-## 0) Package contents (this export)
+## Product constraints (do not change)
 
-Two archives may be provided under `exports/`:
+- **Front Desk:** call or text the **AI Scheduling Agent (360) 800-4066** for routine scheduling. **Staff line (360) 553-1350** for QEEG, obstacles, and non-scheduling questions. Google Business primary phone stays **(360) 553-1350**.
+- **Chat bubble (Front Desk AI):** optional additive channel. Embed is installed site-wide (practice id `7i5hlps1`). If the bubble does not appear on a host, assume vendor/service readiness or domain allowlist — **leave the embed code in place** until deliberately removed. See `src/lib/front-desk-chat-loader.ts`.
+- **Contact:** phone, SMS, `office@altbehtherapy.com` (mailto). No Message Us form backend.
+- **Assets:** only **owned** logos, clinic photos, team headshots, BCIA / QEEG Courses / BeeMedic credentials.
+- **Rates:** $65–$185 depending on provider; $65 when a supervised trainee is available.
 
-| Archive | Use |
+---
+
+## 0) GitHub layout
+
+Repo: `alternativebehavioraltherapy/abtmainpage`  
+
+| Path on GitHub | Meaning |
 | --- | --- |
-| **`neurofeedbackcare-source.zip`** | Full project source for GitHub + Cloudflare Git deploy, or local editing |
-| **`neurofeedbackcare-cloudflare-pages.zip`** | Built `dist/` only — upload directly in Cloudflare Pages “Upload assets” |
+| `neurofeedbackcare-source/` | Project root (`package.json`, `src/`, `netlify.toml`, …) |
 
-**No Message Us / contact form backend** is included. Contact is **call/text + mailto** only.  
-**No extra environment variables** are required for the public marketing site.
+Netlify **Base directory** must be: **`neurofeedbackcare-source`**
 
 ---
 
-## 1) Install, build, and preview locally
+## 1) Netlify (recommended)
 
-Requires **Node.js 22+**.
-
-```bash
-# From the project root (unzipped source)
-npm install
-
-# Typecheck
-npm run typecheck
-
-# Local development (http://0.0.0.0:8080)
-npm run dev
-
-# Production build for Cloudflare Pages
-npm run build:cloudflare
-
-# Optional: preview the Cloudflare build (after build)
-npx wrangler pages dev dist
-```
+### Build scripts
 
 | Goal | Command |
 | --- | --- |
 | Local development | `npm run dev` |
-| Production build (Cloudflare) | `npm run build:cloudflare` |
+| Production build (Netlify) | `npm run build:netlify` |
 | Typecheck | `npm run typecheck` |
-| Deploy with Wrangler | `npm run deploy:cloudflare` |
-| Zip built `dist/` only | `npm run export:cloudflare` |
+| Production build (Cloudflare, optional) | `npm run build:cloudflare` |
 
----
-
-## 2) What to deploy
-
-### Build output
-
-```bash
-npm install
-npm run build:cloudflare
-```
-
-Produces:
+### What `npm run build:netlify` produces
 
 ```text
-dist/
-  assets/           ← JS & CSS
-  brand/            ← logos (owned)
-  clinic/           ← clinic photography (owned)
-  credentials/      ← BCIA, QEEG Courses, BeeMedic badge (owned)
-  team/             ← clinician headshots (owned)
-  _worker.js/       ← Cloudflare Pages server renderer
-  _headers
-  _routes.json
-  _redirects
+dist/client/          ← static assets (publish directory)
 ```
 
-### Deploy with Wrangler (CLI)
+### Netlify UI settings
 
-```bash
-npx wrangler login
-npx wrangler pages deploy dist --project-name=neurofeedbackcare
-# or:
-npm run deploy:cloudflare
-```
-
-Preview URL example: `https://neurofeedbackcare.pages.dev`  
-Confirm the site there **before** changing GoDaddy DNS.
-
----
-
-## 3) Recommended: Git + Cloudflare (long-term)
-
-1. Create a free [Cloudflare account](https://dash.cloudflare.com/sign-up).
-2. Put **source** (`neurofeedbackcare-source.zip` contents) in a free GitHub/GitLab repo.
-3. Cloudflare Dashboard → **Workers & Pages** → **Create** → **Pages** → **Connect to Git**.
-4. Build settings:
-
-| Setting | Value |
+| Field | Value |
 | --- | --- |
-| Framework preset | None / Other |
+| Base directory | `neurofeedbackcare-source` |
+| Build command | `npm run build:netlify` |
+| Publish directory | `dist/client` |
+| Functions directory | *(empty / clear)* |
+
+### Front Desk AI chat widget (optional)
+
+- **Official script:** `https://book.frontdesk.care/chat-widget.js`
+- **Practice ID:** `7i5hlps1` (`data-frontdesk-chat`)
+- **Integration files:**  
+  - `src/lib/front-desk-chat-loader.ts` (constants + bootstrap + checklist)  
+  - `src/routes/__root.tsx` (`ScriptOnce` SSR)  
+  - `src/components/front-desk-chat-widget.tsx` (client fallback)  
+  - `src/components/layout/site-shell.tsx` (mounts widget)  
+  - `src/styles.css` (mobile bottom offset above Call/Text bar)
+- **Status:** keep installed. If bubble missing on live demo after deploy, check vendor first; do not thrash embed code.
+
+---
+
+## 2) Domain (later — not yet)
+
+Keep `neurofeedbackcare.com` on GoDaddy until Netlify demo is approved.  
+Then: Netlify custom domain + GoDaddy DNS (or forwarding) as documented by Netlify.
+
+---
+
+## 3) Cloudflare Pages (optional alternate)
+
+| Field | Value |
+| --- | --- |
+| Root directory | `neurofeedbackcare-source` |
 | Build command | `npm run build:cloudflare` |
-| Build output directory | `dist` |
-| Root directory | `/` (project root) |
-| Node version | `22` (`NODE_VERSION=22` if prompted) |
+| Output | `dist` / per `DEPLOY` notes for Pages |
 
-5. Save and deploy. Pushes to `main` can auto-publish.
-
-### Manual upload (no Git)
-
-1. Unzip **`neurofeedbackcare-cloudflare-pages.zip`** (contents of `dist/`), **or** run `npm run build:cloudflare` on a machine with Node 22.
-2. Cloudflare → **Workers & Pages** → **Create** → **Pages** → **Upload assets**.
-3. Upload the **contents** of `dist` (or the pages zip root).
+Prefer Netlify for the current demo path.
 
 ---
 
-## 4) Connect `neurofeedbackcare.com` (custom domain)
+## 4) Owned assets only
 
-In Cloudflare Pages project **neurofeedbackcare**:
-
-1. **Custom domains** → **Set up a custom domain**
-2. Add `neurofeedbackcare.com` and `www.neurofeedbackcare.com`
-3. Follow the **exact DNS records** Cloudflare shows
+Do not replace clinic/team/brand images with stock. Public assets live under `public/`.
 
 ---
 
-## 5) DNS at GoDaddy
+## 5) Quick smoke checklist after deploy
 
-### Option A — Keep DNS at GoDaddy
-
-1. GoDaddy → **My Products** → **neurofeedbackcare.com** → **DNS**
-2. Remove old website A/CNAME records for `@` and `www` that point at GoDaddy hosting/builder. **Do not delete MX** if you use email on this domain.
-3. Add records Cloudflare lists (typical pattern):
-
-| Type | Name | Value | TTL |
-| --- | --- | --- | --- |
-| CNAME | `www` | `neurofeedbackcare.pages.dev` | 1 hour |
-| CNAME or A | `@` | As Cloudflare shows for apex | 1 hour |
-
-4. Wait for propagation (often 15–60 minutes; up to 24–48 hours).
-5. Wait until Cloudflare shows domain **Active**.
-
-### Option B — Free Cloudflare DNS (recommended)
-
-1. Cloudflare **Add a site** → `neurofeedbackcare.com` (Free).
-2. Copy Cloudflare’s two nameservers into GoDaddy → Nameservers → Custom.
-3. Keep **registration** at GoDaddy; only DNS moves.
-4. Attach apex + www in Pages; preserve **MX/TXT** for email.
-
----
-
-## 6) Free SSL
-
-Cloudflare Pages provisions **free Universal SSL** for custom domains.  
-Use `https://neurofeedbackcare.com` — no separate GoDaddy SSL purchase for Pages.
-
----
-
-## 7) Product / content constraints (do not change)
-
-- **No online booking.** Front Desk is **call or text (360) 553-1350** + AI after hours / if no answer. Fully EHR-integrated description on the Front Desk page.
-- **Contact:** phone, SMS, `office@altbehtherapy.com` (mailto). No Message Us form / form API keys required.
-- **Assets:** only **owned** logos, clinic photos, team headshots, BCIA / QEEG Courses / BeeMedic credentials. Do **not** replace with stock photography.
-- **Rates:** $65–$185 depending on provider; $65 when a supervised trainee is available (teaching clinic).
-
----
-
-## 8) Go-live checklist
-
-### Before DNS cutover
-
-- [ ] `npm run build:cloudflare` succeeds
-- [ ] Site correct on `*.pages.dev`
-- [ ] Pages load: Home, Services, Front Desk, Team, Cost, FAQ, Affiliates, Resources, Contact
-- [ ] Phone/text CTAs show **(360) 553-1350**
-- [ ] No online booking form
-- [ ] Logos, clinic photos, team photos, BeeMedic/BCIA badges load
-- [ ] Mobile usable (sticky Call/Text bar)
-- [ ] Screenshot GoDaddy DNS (especially **MX**)
-
-### DNS cutover
-
-- [ ] Pages project deployed
-- [ ] Custom domains: apex + www
-- [ ] GoDaddy DNS/nameservers updated; old web A/CNAME removed
-- [ ] MX preserved if email stays on GoDaddy
-- [ ] Domain **Active** + HTTPS padlock
-
-### After cutover
-
-- [ ] Call/text links work on a real phone
-- [ ] Cancel unneeded GoDaddy **web hosting** products only after ~48h of stable new site
-- [ ] Keep domain registration (and email products if used)
-
----
-
-## 9) Support notes
-
-- Free Cloudflare Pages is enough for this clinic marketing site.
-- No paid Cloudflare plan required for SSL or custom domains on Pages.
-- If email breaks after DNS changes, restore **MX** from your pre-cutover screenshot first.
-- Future edits: change source → rebuild → redeploy (or push if Git auto-deploy is on).
+- [ ] Homepage loads (not 404)
+- [ ] Services, Front Desk, Team, Cost, FAQ, Affiliates, Resources, Contact
+- [ ] Call/text Front Desk still primary
+- [ ] Deep links / hash sections still work
+- [ ] (Optional) Chat bubble if Front Desk AI service is live for this practice/domain

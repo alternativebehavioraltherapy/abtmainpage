@@ -1,5 +1,36 @@
-# Cloudflare Pages: dynamic routes are handled by the _worker.js (SSR).
-# Static assets under /assets, /brand, and /team are served as files.
-#
-# Optional host preference (enable ONE after DNS is live):
-# /www.neurofeedbackcare.com/*  https://neurofeedbackcare.com/:splat  301
+# Old GoDaddy Website Builder URLs. One hop. Apex host is canonical.
+https://www.neurofeedbackcare.com/*  https://neurofeedbackcare.com/:splat  301!
+http://www.neurofeedbackcare.com/*   https://neurofeedbackcare.com/:splat  301!
+http://neurofeedbackcare.com/*        https://neurofeedbackcare.com/:splat  301!
+
+/neurofeedback                 /about-neurofeedback     301
+/neurofeedback/                /about-neurofeedback     301
+/qeeg-brain-mapping            /services#qeeg           301
+/qeeg-brain-mapping/           /services#qeeg           301
+/talk-therapy                  /services#talk-therapy   301
+/talk-therapy/                 /services#talk-therapy   301
+/neurotherapy/talk-therapy     /services#talk-therapy   301
+/neurotherapy/talk-therapy/    /services#talk-therapy   301
+/emdr                          /services#talk-therapy   301
+/emdr/                         /services#talk-therapy   301
+/biofeedback                   /services#neurofeedback  301
+/biofeedback/                  /services#neurofeedback  301
+/hbot-cost                     /cost                    301
+/hbot-cost/                    /cost                    301
+/scheduling                    /front-desk              301
+/scheduling/                   /front-desk              301
+/contact-us                    /front-desk              301
+/contact-us/                   /front-desk              301
+/app                           /front-desk              301
+/app/                          /front-desk              301
+/m/*                           /front-desk              301
+/our-specialities              /services                301
+/our-specialities/             /services                301
+/podcasts                      /resources               301
+/podcasts/                     /resources               301
+/books-and-articles            /resources               301
+/books-and-articles/           /resources               301
+/ces                           /resources               301
+/ces/                          /resources               301
+/baud                          /resources               301
+/baud/                         /resources               301

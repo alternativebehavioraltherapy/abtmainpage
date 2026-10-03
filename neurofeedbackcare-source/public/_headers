@@ -1,4 +1,4 @@
-# Cloudflare Pages headers (security + caching)
+# Cloudflare Pages / Netlify-style static headers
 /*
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
@@ -13,3 +13,25 @@
 
 /team/*
   Cache-Control: public, max-age=604800
+
+/clinic/*
+  Cache-Control: public, max-age=604800
+
+/learn/*
+  Cache-Control: public, max-age=604800
+
+/credentials/*
+  Cache-Control: public, max-age=604800
+
+/og.jpg
+  Cache-Control: public, max-age=604800
+
+/x-banner.jpg
+  Cache-Control: public, max-age=604800
+
+/sitemap.xml
+  Content-Type: application/xml; charset=utf-8
+  Cache-Control: public, max-age=3600
+
+/robots.txt
+  Cache-Control: public, max-age=3600

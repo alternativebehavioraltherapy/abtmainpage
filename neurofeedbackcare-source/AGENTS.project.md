@@ -1,1 +1,3 @@
 This project is for working on a neurofeedback webpage for Alternative Behavioral Therapy, INC. The domain name is under GoDaddy and we would like to save on website services by providing our own code and forwarding our domain to an appropriate free service. The images attached in the files section are to be used on the website where needed. These images are owned by myself.
+
+This conversation belongs to a Grok project. The project's files are mounted at `/workspace/artifacts` — look there for user-provided sources before concluding the workspace has no project files. Files written there persist to the project across conversations.

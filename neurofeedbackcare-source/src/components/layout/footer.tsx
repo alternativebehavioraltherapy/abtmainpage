@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Mail, MapPin, MessageSquare, Phone } from "lucide-react";
+import { Bot, Mail, MapPin, Phone } from "lucide-react";
 import { navItems, site } from "@/lib/site";
 
 export function Footer() {
@@ -52,23 +52,31 @@ export function Footer() {
                   href={site.phoneTel}
                   className="flex gap-2.5 transition-colors hover:text-green-bright focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-bright focus-visible:ring-offset-2 focus-visible:ring-offset-navy"
                 >
-                  <Phone
+                  <Bot
                     className="mt-0.5 h-4 w-4 shrink-0 text-green-bright"
                     aria-hidden
                   />
-                  <span>Office: {site.phone}</span>
+                  <span>
+                    AI Scheduling Agent
+                    <br />
+                    {site.phone}
+                  </span>
                 </a>
               </li>
               <li>
                 <a
-                  href={site.phoneSms}
+                  href={site.staff.tel}
                   className="flex gap-2.5 transition-colors hover:text-green-bright focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-bright focus-visible:ring-offset-2 focus-visible:ring-offset-navy"
                 >
-                  <MessageSquare
+                  <Phone
                     className="mt-0.5 h-4 w-4 shrink-0 text-green-bright"
                     aria-hidden
                   />
-                  <span>Text: {site.phone}</span>
+                  <span>
+                    Staff line
+                    <br />
+                    {site.staff.phone}
+                  </span>
                 </a>
               </li>
               <li>
@@ -109,16 +117,15 @@ export function Footer() {
               Front Desk
             </h2>
             <p className="mt-4 text-sm leading-relaxed text-white/80">
-              Call or text for appointments. Live staff during most business
-              hours; AI assists after hours — fully integrated with our EHR. No
-              online booking form.
+              Start with the AI Scheduling Agent for faster booking. Staff line
+              for QEEG, obstacles, or non-scheduling questions.
             </p>
             <div className="mt-5 flex flex-col gap-2">
               <a
                 href={site.phoneTel}
                 className="inline-flex min-h-11 items-center justify-center rounded-full bg-green px-5 text-sm font-semibold text-white transition-colors hover:bg-green-bright focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-bright focus-visible:ring-offset-2 focus-visible:ring-offset-navy"
               >
-                Call or text {site.phone}
+                Call AI {site.phone}
               </a>
               <Link
                 to="/front-desk"

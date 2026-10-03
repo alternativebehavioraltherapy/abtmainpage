@@ -1,11 +1,11 @@
 import { Link } from "@tanstack/react-router";
-import { MessageSquare, Phone } from "lucide-react";
+import { Bot, Phone } from "lucide-react";
 import { site } from "@/lib/site";
 import { Button } from "@/components/ui/button";
 
 export function CtaBand({
   title = "Ready to take the next step?",
-  description = "Call or text (360) 553-1350. A live receptionist answers most business hours; our AI Front Desk takes over when staff are unavailable — list, change, or request appointments with no delay. No online booking form.",
+  description = "Call or text our AI Scheduling Agent at (360) 800-4066. Appointments are first come, first served. Use the staff line for QEEG, scheduling obstacles, or non-scheduling concerns.",
 }: {
   title?: string;
   description?: string;
@@ -28,8 +28,8 @@ export function CtaBand({
         <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <Button asChild variant="phone" size="xl">
             <a href={site.phoneTel}>
-              <Phone className="h-5 w-5" aria-hidden />
-              Call {site.phone}
+              <Bot className="h-5 w-5" aria-hidden />
+              Call AI {site.phone}
             </a>
           </Button>
           <Button
@@ -38,9 +38,9 @@ export function CtaBand({
             size="xl"
             className="border-white/40 text-white hover:bg-white hover:text-navy"
           >
-            <a href={site.phoneSms}>
-              <MessageSquare className="h-5 w-5" aria-hidden />
-              Text the Front Desk
+            <a href={site.staff.tel}>
+              <Phone className="h-5 w-5" aria-hidden />
+              Staff {site.staff.phone}
             </a>
           </Button>
         </div>

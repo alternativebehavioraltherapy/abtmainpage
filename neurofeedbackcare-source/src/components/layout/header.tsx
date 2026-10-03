@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Menu, Phone, X } from "lucide-react";
+import { Bot, Menu, X } from "lucide-react";
 import { navItems, site } from "@/lib/site";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -23,9 +23,8 @@ export function Header() {
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border/80 bg-surface/95 backdrop-blur-md">
+    <header className="border-b border-border/80 bg-surface/95 backdrop-blur-md">
       <div className="container-abt flex h-16 items-center justify-between gap-3 md:h-[4.5rem]">
-        {/* Horizontal wordmark already includes the leaf mark — no separate circle */}
         <Link
           to="/"
           className="flex min-w-0 shrink-0 items-center rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green focus-visible:ring-offset-2"
@@ -73,10 +72,13 @@ export function Header() {
             size="sm"
             className="hidden min-[380px]:inline-flex"
           >
-            <a href={site.phoneTel} aria-label={`Call ${site.phone}`}>
-              <Phone className="h-4 w-4" aria-hidden />
-              <span className="hidden sm:inline">{site.phone}</span>
-              <span className="sm:hidden">Call</span>
+            <a
+              href={site.phoneTel}
+              aria-label={`Call AI Scheduling Agent ${site.phone}`}
+            >
+              <Bot className="h-4 w-4" aria-hidden />
+              <span className="hidden lg:inline">AI Agent · </span>
+              {site.phone}
             </a>
           </Button>
           <Button
@@ -85,8 +87,11 @@ export function Header() {
             size="icon"
             className="min-[380px]:hidden"
           >
-            <a href={site.phoneTel} aria-label={`Call ${site.phone}`}>
-              <Phone className="h-4 w-4" aria-hidden />
+            <a
+              href={site.phoneTel}
+              aria-label={`Call AI Scheduling Agent ${site.phone}`}
+            >
+              <Bot className="h-4 w-4" aria-hidden />
             </a>
           </Button>
           <Button
@@ -110,7 +115,7 @@ export function Header() {
       {open && (
         <div
           id="mobile-nav"
-          className="max-h-[min(70vh,calc(100dvh-4rem))] overflow-y-auto border-t border-border bg-surface xl:hidden"
+          className="max-h-[min(70vh,calc(100dvh-8rem))] overflow-y-auto border-t border-border bg-surface xl:hidden"
         >
           <nav
             className="container-abt flex flex-col gap-1 py-3"
@@ -141,12 +146,18 @@ export function Header() {
               href={site.phoneTel}
               className="mt-2 flex min-h-12 items-center justify-center gap-2 rounded-full bg-green px-4 py-3.5 text-base font-semibold text-white"
             >
-              <Phone className="h-4 w-4" aria-hidden />
-              Call or text {site.phone}
+              <Bot className="h-4 w-4" aria-hidden />
+              AI Agent {site.phone}
+            </a>
+            <a
+              href={site.staff.tel}
+              className="flex min-h-11 items-center justify-center rounded-full border-2 border-navy px-4 py-3 text-sm font-semibold text-navy"
+            >
+              Staff line {site.staff.phone}
             </a>
             <Link
               to="/front-desk"
-              className="flex min-h-11 items-center justify-center rounded-full border-2 border-navy px-4 py-3 text-sm font-semibold text-navy"
+              className="flex min-h-11 items-center justify-center rounded-full px-4 py-3 text-sm font-semibold text-green"
             >
               Front Desk details
             </Link>
