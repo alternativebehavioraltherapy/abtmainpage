@@ -5,7 +5,6 @@ import {
   HeartPulse,
   GraduationCap,
   Phone,
-  MessageSquare,
   ShieldCheck,
   Wind,
   ArrowRight,
@@ -15,6 +14,7 @@ import {
   BookOpen,
   BadgeCheck,
   CheckCircle2,
+  Bot,
 } from "lucide-react";
 import { ServiceCard } from "@/components/service-card";
 import { CtaBand } from "@/components/cta-band";
@@ -22,22 +22,11 @@ import { Button } from "@/components/ui/button";
 import { ImageCarousel } from "@/components/image-carousel";
 import { homeCarouselSlides } from "@/lib/clinic-images";
 import { site } from "@/lib/site";
+import { pageHead, pagesSeo } from "@/lib/seo";
 
 export const Route = createFileRoute("/")({
   component: HomePage,
-  head: () => ({
-    meta: [
-      {
-        title:
-          "Alternative Behavioral Therapy | Neurofeedback & Counseling — Vancouver, WA",
-      },
-      {
-        name: "description",
-        content:
-          "Neurofeedback, QEEG brain mapping, talk therapy (EMDR & IFS), limited M-HBOT, and mentoring in Vancouver, WA. Call or text (360) 553-1350 — AI-assisted Front Desk. No online booking.",
-      },
-    ],
-  }),
+  head: () => pageHead(pagesSeo.home),
 });
 
 const trustPoints = [
@@ -69,7 +58,7 @@ const trustPoints = [
     icon: GraduationCap,
     title: "Teaching clinic",
     detail:
-      "Supervised interns, associates, and technicians — lower-rate options when trainees are on staff.",
+      "Supervised technicians and interns — sessions $65–$130 depending on training and scope",
   },
 ];
 
@@ -84,34 +73,46 @@ const heroHighlights = [
 function HomePage() {
   return (
     <>
-      {/* Hero */}
       <section className="relative overflow-hidden border-b border-border bg-bg">
-        <div
-          className="pointer-events-none absolute inset-0 opacity-[0.08]"
-          aria-hidden
-          style={{
-            backgroundImage:
-              "radial-gradient(ellipse 70% 50% at 15% 10%, var(--color-green) 0%, transparent 55%), radial-gradient(ellipse 50% 40% at 90% 0%, var(--color-navy) 0%, transparent 50%)",
-          }}
-        />
-
-        {/* Brand mark — tight border hugging the logo, centered */}
-        <div className="container-abt relative flex justify-center pt-10 md:pt-14">
-          <div className="inline-flex max-w-[min(100%,28rem)] items-center justify-center rounded-2xl border border-border bg-surface px-4 py-3 shadow-card sm:max-w-[min(100%,32rem)] sm:px-5 sm:py-3.5 md:max-w-[36rem] md:px-6 md:py-4">
-            <img
-              src="/brand/logo-horizontal-color.jpg"
-              alt={site.name}
-              className="mx-auto block h-auto w-full object-contain"
-              width={2500}
-              height={720}
-              decoding="async"
-              fetchPriority="high"
-            />
+        {/* Partial-height clinic photo + logo watermark — not a full-viewport fill */}
+        <div className="relative h-[11.5rem] overflow-hidden sm:h-[13.5rem] md:h-[15.5rem]">
+          <img
+            src="/clinic/5Q8A0214.jpg"
+            alt="Client in a neurofeedback session watching live EEG feedback on a clinic monitor"
+            className="absolute inset-0 h-full w-full object-cover object-[center_68%]"
+            width={1600}
+            height={900}
+            decoding="async"
+            fetchPriority="high"
+          />
+          <div
+            className="absolute inset-0 bg-gradient-to-b from-navy/50 via-navy/35 to-bg"
+            aria-hidden
+          />
+          <img
+            src="/brand/logo-circle-color.png"
+            alt=""
+            className="pointer-events-none absolute -right-6 top-1/2 hidden h-40 w-40 -translate-y-1/2 opacity-[0.18] sm:block md:right-10 md:h-48 md:w-48"
+            width={192}
+            height={192}
+            aria-hidden
+          />
+          <div className="container-abt relative flex h-full items-end pb-3">
+            <div className="inline-flex max-w-[min(100%,28rem)] items-center justify-center rounded-2xl border border-border bg-surface/95 px-4 py-3 shadow-lg backdrop-blur-sm sm:max-w-[min(100%,32rem)] sm:px-5 sm:py-3.5 md:max-w-[36rem] md:px-6 md:py-4">
+              <img
+                src="/brand/logo-horizontal-color.jpg"
+                alt={site.name}
+                className="mx-auto block h-auto w-full object-contain"
+                width={2500}
+                height={720}
+                decoding="async"
+                fetchPriority="high"
+              />
+            </div>
           </div>
         </div>
 
-        <div className="container-abt relative grid items-stretch gap-12 py-12 md:grid-cols-2 md:gap-12 md:py-16 lg:gap-16">
-          {/* Left column — balanced length, early CTAs, no rate/OON/teaching redundancy in body */}
+        <div className="container-abt relative grid items-stretch gap-12 py-10 md:grid-cols-2 md:gap-12 md:py-14 lg:gap-16">
           <div className="flex flex-col">
             <div className="inline-flex w-fit items-center gap-2.5 rounded-full border border-green/30 bg-green-soft/90 px-4 py-2 text-sm font-semibold uppercase tracking-wider text-navy md:text-base">
               <span
@@ -124,26 +125,38 @@ function HomePage() {
             <h1 className="mt-5 font-display text-4xl leading-[1.1] text-navy text-balance sm:text-5xl md:text-5xl lg:text-[3.5rem]">
               Healing that starts with how your brain works
             </h1>
+            <p className="mt-3 text-base font-medium text-navy/80 md:text-lg">
+              Neurofeedback · QEEG · Psychotherapy in Vancouver, WA
+            </p>
 
-            {/* Primary contact — high on page for phones & short viewports */}
             <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
               <Button asChild variant="phone" size="xl" className="shadow-md">
                 <a href={site.phoneTel}>
-                  <Phone className="h-5 w-5" aria-hidden />
-                  Call or text {site.phone}
+                  <Bot className="h-5 w-5" aria-hidden />
+                  Call AI {site.phone}
                 </a>
               </Button>
               <Button asChild variant="outline" size="xl">
-                <a href={site.phoneSms}>
-                  <MessageSquare className="h-5 w-5" aria-hidden />
-                  Text Front Desk
+                <a href={site.staff.tel}>
+                  <Phone className="h-5 w-5" aria-hidden />
+                  Staff {site.staff.phone}
                 </a>
               </Button>
             </div>
             <p className="mt-3 max-w-lg text-sm leading-relaxed text-muted md:text-base">
-              Live receptionist most business hours. After hours—or if no one
-              answers—our EHR-integrated AI handles appointments without delay.
-              No online booking form.
+              Scheduling has changed. Use the energy-efficient{" "}
+              <span className="font-semibold text-navy">
+                AI Scheduling Agent
+              </span>{" "}
+              at {site.phone} for most appointments. Staff line{" "}
+              {site.staff.phone} for QEEG, obstacles, or other concerns.{" "}
+              <Link
+                to="/front-desk"
+                className="font-semibold text-green hover:underline"
+              >
+                More information
+              </Link>
+              . Online booking is a beta option if you prefer a calendar.
             </p>
 
             <p className="mt-7 max-w-xl text-lg leading-relaxed text-ink-soft md:text-xl md:leading-relaxed">
@@ -187,6 +200,13 @@ function HomePage() {
                 className="inline-flex items-center gap-1.5 text-navy hover:text-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green"
               >
                 Explore services
+                <ArrowRight className="h-4 w-4" aria-hidden />
+              </Link>
+              <Link
+                to="/about-neurofeedback"
+                className="inline-flex items-center gap-1.5 text-navy hover:text-green focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green"
+              >
+                About neurofeedback
                 <ArrowRight className="h-4 w-4" aria-hidden />
               </Link>
               <Link
@@ -273,7 +293,6 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Who we are */}
       <section className="section-pad" aria-labelledby="who-heading">
         <div className="container-abt grid gap-10 lg:grid-cols-12 lg:gap-14">
           <div className="lg:col-span-5">
@@ -310,7 +329,6 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Clinic photo carousel */}
       <section
         className="border-y border-border bg-surface section-pad !py-10 md:!py-12"
         aria-labelledby="clinic-photos-heading"
@@ -335,7 +353,6 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Teaching clinic */}
       <section
         className="border-b border-border bg-navy"
         aria-labelledby="teaching-heading"
@@ -355,14 +372,15 @@ function HomePage() {
             </div>
             <p className="mt-3 text-sm leading-relaxed text-white/80 md:text-base">
               We regularly train student interns, associate therapists, and
-              technicians under clinical supervision. When a trainee is on
-              staff, supervised neurofeedback may be available at a lower rate
-              (as low as $65). Availability varies — ask the Front Desk.
+              technicians under clinical supervision. Technician and intern
+              sessions are {site.rates.technician} depending on training,
+              experience, and scope of work. Availability varies — ask the
+              Front Desk.
             </p>
           </div>
           <div className="flex shrink-0 flex-col gap-3 sm:flex-row">
             <Button asChild variant="phone" size="lg">
-              <a href={site.phoneTel}>Call {site.phone}</a>
+              <a href={site.phoneTel}>Call AI {site.phone}</a>
             </Button>
             <Button
               asChild
@@ -376,7 +394,6 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Services overview */}
       <section
         className="section-pad bg-bg"
         aria-labelledby="services-heading"
@@ -448,17 +465,23 @@ function HomePage() {
                   Next step
                 </p>
                 <h3 className="mt-3 font-display text-xl text-navy">
-                  Start with a call or text
+                  Call the AI Scheduling Agent
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted">
-                  No online calendar. Reach the Front Desk to request a
-                  consultation, ask about rates, or change an appointment.
+                  First come, first served. Call {site.phone} for most
+                  bookings. Staff line for QEEG or obstacles.{" "}
+                  <Link
+                    to="/front-desk"
+                    className="font-semibold text-green hover:underline"
+                  >
+                    More information
+                  </Link>
                 </p>
               </div>
               <div className="mt-6 flex flex-col gap-2">
                 <Button asChild variant="primary" className="w-full">
                   <a href={site.phoneTel}>
-                    <Phone className="h-4 w-4" aria-hidden />
+                    <Bot className="h-4 w-4" aria-hidden />
                     {site.phone}
                   </a>
                 </Button>
@@ -471,7 +494,6 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Front Desk + Contact strip */}
       <section className="section-pad" aria-labelledby="next-heading">
         <div className="container-abt">
           <h2 id="next-heading" className="sr-only">
@@ -483,17 +505,17 @@ function HomePage() {
                 Front Desk
               </p>
               <h3 className="mt-2 font-display text-2xl text-navy md:text-3xl">
-                Appointments by phone or text
+                AI Agent first
               </h3>
               <p className="mt-4 text-sm leading-relaxed text-muted md:text-base">
                 {site.frontDesk.body}
               </p>
               <ul className="mt-5 space-y-2.5 text-sm text-ink-soft">
                 {[
-                  "List, cancel, or reschedule appointments",
-                  "Request a new consultation",
-                  "Live staff during business hours",
-                  "AI after hours — fully EHR integrated",
+                  `AI Scheduling Agent ${site.phone} — primary`,
+                  `Staff line ${site.staff.phone} — QEEG, obstacles, other concerns`,
+                  "First come, first served by availability",
+                  "Online booking is a beta option",
                 ].map((item) => (
                   <li key={item} className="flex gap-2.5">
                     <span
@@ -509,9 +531,9 @@ function HomePage() {
                   <Link to="/front-desk">Front Desk</Link>
                 </Button>
                 <Button asChild variant="outline" size="lg">
-                  <a href={site.phoneSms}>
-                    <MessageSquare className="h-4 w-4" aria-hidden />
-                    Text us
+                  <a href={site.phoneTel}>
+                    <Bot className="h-4 w-4" aria-hidden />
+                    Call AI
                   </a>
                 </Button>
               </div>
@@ -537,11 +559,23 @@ function HomePage() {
                     href={site.phoneTel}
                     className="flex gap-3 transition-colors hover:text-green-bright"
                   >
+                    <Bot
+                      className="mt-0.5 h-5 w-5 shrink-0 text-green-bright"
+                      aria-hidden
+                    />
+                    <span>AI Agent: {site.phone}</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={site.staff.tel}
+                    className="flex gap-3 transition-colors hover:text-green-bright"
+                  >
                     <Phone
                       className="mt-0.5 h-5 w-5 shrink-0 text-green-bright"
                       aria-hidden
                     />
-                    <span>Office: {site.phone}</span>
+                    <span>Staff: {site.staff.phone}</span>
                   </a>
                 </li>
                 <li>
@@ -567,7 +601,7 @@ function HomePage() {
                   size="lg"
                   className="border-white/35 text-white hover:bg-white hover:text-navy"
                 >
-                  <a href={site.phoneTel}>Call now</a>
+                  <a href={site.phoneTel}>Call AI now</a>
                 </Button>
               </div>
             </div>

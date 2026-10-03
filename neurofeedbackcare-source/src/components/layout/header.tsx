@@ -39,7 +39,7 @@ export function Header() {
         </Link>
 
         <nav
-          className="hidden items-center gap-0.5 xl:flex"
+          className="hidden min-w-0 flex-1 items-center gap-0.5 overflow-x-auto lg:flex"
           aria-label="Primary"
         >
           {navItems.map((item) => {
@@ -97,7 +97,7 @@ export function Header() {
           <Button
             variant="soft"
             size="icon"
-            className="xl:hidden"
+            className="lg:hidden"
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
             aria-controls="mobile-nav"
@@ -115,7 +115,7 @@ export function Header() {
       {open && (
         <div
           id="mobile-nav"
-          className="max-h-[min(70vh,calc(100dvh-8rem))] overflow-y-auto border-t border-border bg-surface xl:hidden"
+          className="max-h-[min(70vh,calc(100dvh-8rem))] overflow-y-auto border-t border-border bg-surface lg:hidden"
         >
           <nav
             className="container-abt flex flex-col gap-1 py-3"

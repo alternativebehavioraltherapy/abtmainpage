@@ -10,6 +10,7 @@ import {
   ArrowRight,
   CheckCircle2,
   ExternalLink,
+  Bot,
 } from "lucide-react";
 import { PageHero } from "@/components/page-hero";
 import { CtaBand } from "@/components/cta-band";
@@ -20,19 +21,11 @@ import {
   servicesCarouselSlides,
 } from "@/lib/clinic-images";
 import { site } from "@/lib/site";
+import { pageHead, pagesSeo } from "@/lib/seo";
 
 export const Route = createFileRoute("/services")({
   component: ServicesPage,
-  head: () => ({
-    meta: [
-      { title: "Services | Alternative Behavioral Therapy" },
-      {
-        name: "description",
-        content:
-          "Neurofeedback, QEEG brain mapping, talk therapy (EMDR & IFS), limited M-HBOT, and mentoring in Vancouver, WA. Call or text (360) 553-1350.",
-      },
-    ],
-  }),
+  head: () => pageHead(pagesSeo.services),
 });
 
 const services = [
@@ -62,11 +55,13 @@ const services = [
     body: [
       "A quantitative EEG is typically a ~20-minute recording of brainwaves from 19 sites using 22 sensors.",
       "Data is carefully reviewed and cleaned (including independent component analysis). Interpretation draws on known neuro-markers and phenotype models, and findings are corroborated with client report and tools such as Creyos or other cognitive evaluations when useful.",
+      `Initial QEEG testing is ${site.qeeg.initial} and includes additional assessments at no extra charge when needed — Creyos Cognitive Testing, questionnaires, QIK Continuous Performance Testing (CPT), and others depending on findings and client self-report. Repeat QEEG is half-off at ${site.qeeg.repeat}.`,
       "Results guide neurofeedback protocol recommendations and help you understand the “why” behind the plan.",
     ],
     points: [
       "19-site clinical mapping process",
       "Informs custom training plans",
+      `Initial QEEG ${site.qeeg.initial} · repeat ${site.qeeg.repeat} (half-off)`,
       "Consultation required before scheduling related services",
     ],
   },
@@ -129,13 +124,13 @@ function ServicesPage() {
       <PageHero
         eyebrow="Services"
         title="Care designed around your nervous system"
-        description="Neurofeedback, brain mapping, counseling, limited M-HBOT, and professional mentoring in Vancouver, WA. Clear next steps — call or text, no online booking."
+        description="Neurofeedback, QEEG brain mapping, psychotherapy with EMDR & IFS, limited M-HBOT, and professional mentoring in Vancouver, WA. Call the AI Scheduling Agent — online booking is a beta option."
       >
         <div className="flex flex-col gap-3 sm:flex-row">
           <Button asChild variant="phone" size="lg">
             <a href={site.phoneTel}>
-              <Phone className="h-4 w-4" aria-hidden />
-              Call or text {site.phone}
+              <Bot className="h-4 w-4" aria-hidden />
+              Call AI {site.phone}
             </a>
           </Button>
           <Button asChild variant="outline" size="lg">
@@ -228,6 +223,17 @@ function ServicesPage() {
                       <p key={para.slice(0, 40)}>{para}</p>
                     ))}
                   </div>
+                  {isNeurofeedback && (
+                    <p className="mt-5">
+                      <Link
+                        to="/about-neurofeedback"
+                        className="inline-flex items-center gap-1.5 font-semibold text-green hover:text-navy"
+                      >
+                        About neurofeedback — evidence and how it works
+                        <ArrowRight className="h-4 w-4" aria-hidden />
+                      </Link>
+                    </p>
+                  )}
                   {isMentoring && (
                     <div className="mt-6 grid gap-4 sm:grid-cols-2">
                       <a
@@ -333,9 +339,9 @@ function ServicesPage() {
             </h2>
             <p className="mt-4 text-muted leading-relaxed">
               A consultation is required before intake and ongoing services.
-              There is no online booking calendar. Call or text the Front Desk
-              to ask about clinician fit, trainee availability, waitlists, and
-              next steps.
+              Calling the AI Scheduling Agent is the easiest path. Online
+              booking is available as a beta option. Use the staff line for
+              QEEG scheduling, scheduling obstacles, or non-scheduling questions.
             </p>
             <ul className="mt-5 space-y-2 text-sm text-ink-soft">
               <li className="flex gap-2">

@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutNeurofeedbackRouteImport } from './routes/about-neurofeedback'
 import { Route as AffiliatesRouteImport } from './routes/affiliates'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CostRouteImport } from './routes/cost'
@@ -23,6 +24,11 @@ import { Route as TheTeamRouteImport } from './routes/the-team'
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutNeurofeedbackRoute = AboutNeurofeedbackRouteImport.update({
+  id: '/about-neurofeedback',
+  path: '/about-neurofeedback',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AffiliatesRoute = AffiliatesRouteImport.update({
@@ -73,6 +79,7 @@ const TheTeamRoute = TheTeamRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about-neurofeedback': typeof AboutNeurofeedbackRoute
   '/affiliates': typeof AffiliatesRoute
   '/contact': typeof ContactRoute
   '/cost': typeof CostRoute
@@ -85,6 +92,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about-neurofeedback': typeof AboutNeurofeedbackRoute
   '/affiliates': typeof AffiliatesRoute
   '/contact': typeof ContactRoute
   '/cost': typeof CostRoute
@@ -98,6 +106,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about-neurofeedback': typeof AboutNeurofeedbackRoute
   '/affiliates': typeof AffiliatesRoute
   '/contact': typeof ContactRoute
   '/cost': typeof CostRoute
@@ -112,6 +121,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/about-neurofeedback'
     | '/affiliates'
     | '/contact'
     | '/cost'
@@ -124,6 +134,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/about-neurofeedback'
     | '/affiliates'
     | '/contact'
     | '/cost'
@@ -136,6 +147,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/about-neurofeedback'
     | '/affiliates'
     | '/contact'
     | '/cost'
@@ -149,6 +161,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutNeurofeedbackRoute: typeof AboutNeurofeedbackRoute
   AffiliatesRoute: typeof AffiliatesRoute
   ContactRoute: typeof ContactRoute
   CostRoute: typeof CostRoute
@@ -167,6 +180,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about-neurofeedback': {
+      id: '/about-neurofeedback'
+      path: '/about-neurofeedback'
+      fullPath: '/about-neurofeedback'
+      preLoaderRoute: typeof AboutNeurofeedbackRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/affiliates': {
@@ -237,6 +257,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutNeurofeedbackRoute: AboutNeurofeedbackRoute,
   AffiliatesRoute: AffiliatesRoute,
   ContactRoute: ContactRoute,
   CostRoute: CostRoute,
