@@ -15,7 +15,7 @@ export function ServiceCard({
   description: string;
   icon: LucideIcon;
   href?: string;
-  /** In-page section id on the destination (e.g. "mhbot" → /services#mhbot) */
+  /** In-page section id on the destination (e.g. "hbot" → /services#hbot) */
   hash?: string;
   className?: string;
 }) {

@@ -83,20 +83,18 @@ const services = [
     ],
   },
   {
-    id: "mhbot",
+    id: "hbot",
     icon: Wind,
-    title: "Mild Hyperbaric Oxygen Therapy (M-HBOT)",
-    summary:
-      "Limited, medically supervised oxygen therapy for qualifying individuals.",
+    title: "HBOT",
+    summary: "General wellness only. Medically screened and medically supervised.",
     body: [
-      "We offer mild hyperbaric oxygen therapy with medical screening and supervision. Availability is extremely limited and not open to all applicants.",
-      "Our system is a “sit-up” chamber with manufacturer-installed audio for intercom and media access. It provides approximately 35% blow-by oxygen through a mask at 2 atmospheric pressure (2 ATA).",
-      "Acceptance is at the sole discretion of ABT and the medical provider. Please inquire through the Front Desk if you are interested.",
+      "HBOT is a general wellness service only. It is medically screened and medically supervised.",
+      `Sessions are ${site.hbot.session}. ${site.hbot.screening}`,
     ],
     points: [
-      "Medical screening required",
-      "Limited slots — inquire early",
-      "Not a substitute for primary medical care",
+      "General wellness only",
+      "Medically screened and supervised",
+      `${site.hbot.session} per session`,
     ],
   },
   {
@@ -124,7 +122,7 @@ function ServicesPage() {
       <PageHero
         eyebrow="Services"
         title="Care designed around your nervous system"
-        description="Neurofeedback, QEEG brain mapping, psychotherapy with EMDR & IFS, limited M-HBOT, and professional mentoring in Vancouver, WA. Call the AI Scheduling Agent — online booking is a beta option."
+        description="Neurofeedback, QEEG brain mapping, psychotherapy with EMDR & IFS, HBOT, and professional mentoring in Vancouver, WA. Call the AI Scheduling Agent — online booking is a beta option."
       >
         <div className="flex flex-col gap-3 sm:flex-row">
           <Button asChild variant="phone" size="lg">
@@ -235,34 +233,35 @@ function ServicesPage() {
                     </p>
                   )}
                   {isMentoring && (
-                    <div className="mt-6 grid gap-4 sm:grid-cols-2">
+                    <div className="@container mt-6">
+                      <div className="grid gap-4 @4xl:grid-cols-2">
                       <a
                         href="https://beemedic.com/en/education"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group flex flex-col gap-4 rounded-2xl border border-border bg-bg p-5 transition-all hover:border-green/40 hover:shadow-md sm:flex-row sm:items-center"
+                        className="group flex flex-col items-center gap-4 rounded-2xl border border-border bg-bg p-5 text-center transition-all hover:border-green/40 hover:shadow-md @md:flex-row @md:items-center @md:text-left"
                       >
-                        <div className="flex h-28 w-full shrink-0 items-center justify-center rounded-xl bg-black p-3 sm:h-32 sm:w-32">
+                        <div className="flex h-28 w-28 shrink-0 items-center justify-center rounded-xl bg-black p-3">
                           <img
                             src="/credentials/beemedic-partner.png"
                             alt="BEE Medic Authorized Training Partner"
-                            className="h-full w-auto max-h-28 object-contain sm:max-h-28"
+                            className="h-full w-auto max-h-24 object-contain"
                             loading="lazy"
                             decoding="async"
                           />
                         </div>
                         <div className="min-w-0 flex-1">
-                          <div className="flex items-start justify-between gap-2">
+                          <div className="flex items-start justify-center gap-2 @md:justify-between">
                             <div>
                               <p className="text-xs font-semibold uppercase tracking-wider text-green">
                                 Credential
                               </p>
-                              <h3 className="mt-1 font-display text-lg text-navy group-hover:text-green">
+                              <h3 className="mt-1 text-balance font-display text-lg text-navy group-hover:text-green">
                                 BEE Medic Training Partner
                               </h3>
                             </div>
                             <ExternalLink
-                              className="mt-1 h-4 w-4 shrink-0 text-muted"
+                              className="mt-1 hidden h-4 w-4 shrink-0 text-muted @md:block"
                               aria-hidden
                             />
                           </div>
@@ -276,9 +275,9 @@ function ServicesPage() {
                         href="http://www.qeegcourses.com"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group flex flex-col gap-4 rounded-2xl border border-border bg-bg p-5 transition-all hover:border-green/40 hover:shadow-md sm:flex-row sm:items-center"
+                        className="group flex flex-col items-center gap-4 rounded-2xl border border-border bg-bg p-5 text-center transition-all hover:border-green/40 hover:shadow-md @md:flex-row @md:items-center @md:text-left"
                       >
-                        <div className="flex h-20 w-full shrink-0 items-center justify-center rounded-xl bg-white p-3 sm:h-24 sm:w-44">
+                        <div className="flex h-20 w-full max-w-44 shrink-0 items-center justify-center rounded-xl bg-white p-3">
                           <img
                             src="/credentials/qeeg-courses.png"
                             alt="QEEG Courses logo"
@@ -288,17 +287,17 @@ function ServicesPage() {
                           />
                         </div>
                         <div className="min-w-0 flex-1">
-                          <div className="flex items-start justify-between gap-2">
+                          <div className="flex items-start justify-center gap-2 @md:justify-between">
                             <div>
                               <p className="text-xs font-semibold uppercase tracking-wider text-green">
                                 Training partner
                               </p>
-                              <h3 className="mt-1 font-display text-lg text-navy group-hover:text-green">
+                              <h3 className="mt-1 text-balance font-display text-lg text-navy group-hover:text-green">
                                 QEEG Courses
                               </h3>
                             </div>
                             <ExternalLink
-                              className="mt-1 h-4 w-4 shrink-0 text-muted"
+                              className="mt-1 hidden h-4 w-4 shrink-0 text-muted @md:block"
                               aria-hidden
                             />
                           </div>
@@ -308,6 +307,7 @@ function ServicesPage() {
                           </p>
                         </div>
                       </a>
+                      </div>
                     </div>
                   )}
                   <ul className="mt-5 grid gap-2 sm:grid-cols-3">

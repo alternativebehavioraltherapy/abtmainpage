@@ -42,7 +42,7 @@ export const pagesSeo = {
     title:
       "Neurofeedback, QEEG, EMDR & IFS Therapy Services | Vancouver, WA",
     description:
-      "Clinical neurofeedback, QEEG brain mapping ($800 initial / $400 repeat), talk therapy with EMDR and Internal Family Systems, limited M-HBOT, and clinician mentoring in Vancouver, WA.",
+      "Clinical neurofeedback, QEEG brain mapping ($800 initial / $400 repeat), talk therapy with EMDR and Internal Family Systems, medically supervised HBOT ($95), and clinician mentoring in Vancouver, WA.",
     path: "/services",
   },
   aboutNeurofeedback: {
@@ -69,7 +69,7 @@ export const pagesSeo = {
     title:
       "Neurofeedback Cost & QEEG Fees ($800 / $400) | Vancouver, WA",
     description:
-      "Session rates $65–$185. Technicians and interns $65–$130. Initial QEEG $800 includes Creyos, QIK CPT, and questionnaires when needed; repeat QEEG $400. Out-of-network superbills.",
+      "Session rates $65–$185. Technicians and interns $65–$130. HBOT is a general wellness service at $95; medical screening fee is set by the medical provider. Initial QEEG $800 includes Creyos, QIK CPT, and questionnaires when needed; repeat QEEG $400. Some services, not all, may be eligible for reimbursement.",
     path: "/cost",
   },
   faq: {

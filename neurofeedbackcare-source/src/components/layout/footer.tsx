@@ -141,7 +141,7 @@ export function Footer() {
           <p>
             © {new Date().getFullYear()} {site.name}. All rights reserved.
           </p>
-          <p>Out-of-network practice · Superbills available</p>
+          <p>Out-of-network · some services may be eligible for reimbursement</p>
         </div>
       </div>
     </footer>

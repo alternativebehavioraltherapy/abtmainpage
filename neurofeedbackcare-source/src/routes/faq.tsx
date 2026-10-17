@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Phone, ArrowRight } from "lucide-react";
+import { Phone, ArrowRight, Bot } from "lucide-react";
 import { PageHero } from "@/components/page-hero";
 import { CtaBand } from "@/components/cta-band";
 import { Button } from "@/components/ui/button";
@@ -10,19 +10,12 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { site } from "@/lib/site";
+import { pageHead, pagesSeo, SITE_ORIGIN } from "@/lib/seo";
+import { JsonLd } from "@/components/json-ld";
 
 export const Route = createFileRoute("/faq")({
   component: FaqPage,
-  head: () => ({
-    meta: [
-      { title: "FAQ | Alternative Behavioral Therapy" },
-      {
-        name: "description",
-        content:
-          "FAQ for Alternative Behavioral Therapy in Vancouver, WA: insurance, superbills, rates, teaching clinic, and how to start. Call or text (360) 553-1350.",
-      },
-    ],
-  }),
+  head: () => pageHead(pagesSeo.faq),
 });
 
 const faqGroups = [
@@ -31,19 +24,23 @@ const faqGroups = [
     items: [
       {
         q: "How do I schedule or change an appointment?",
-        a: "Call or text the office. There is no online booking calendar. A live receptionist is available most business hours; after hours—or if no one answers—our EHR-integrated AI can list, cancel, reschedule, or request new appointments.",
+        a: `Call or text the energy-efficient AI Scheduling Agent at ${site.phone}. That is the fastest path for listing, booking, canceling, or rescheduling. Appointments are first come, first served by current availability. If there are no openings — or you need QEEG scheduling, a significant obstacle resolved, or a non-scheduling question — use the staff line at ${site.staff.phone} (may have notable delays). Online booking is a beta option; we still recommend the AI line.`,
+      },
+      {
+        q: "What is the difference between the AI line and the staff line?",
+        a: `The AI Scheduling Agent (${site.phone}) handles most scheduling 24/7. The staff line (${site.staff.phone}) still reaches people in the office and should be used for QEEG scheduling, significant scheduling obstacles, or non-scheduling concerns.`,
       },
       {
         q: "Do you accept insurance?",
-        a: "We are out-of-network. We can provide superbills so you may seek reimbursement from your insurance plan, depending on your benefits.",
+        a: "We are out-of-network and do not bill insurance directly. Superbills are available for some services, not all, so you may seek reimbursement from your plan depending on your benefits.",
       },
       {
         q: "What are your rates?",
-        a: `Rates range ${site.rates.range} depending on the credentials and experience of the provider and current availability. Assessments (such as QEEG) are a separate cost. The lowest rates apply when a supervised trainee is on staff. See the Cost page for a clear overview.`,
+        a: `Rates range ${site.rates.range} depending on the credentials and experience of the provider and current availability. Technicians and interns are ${site.rates.technician} depending on training, experience, and scope of work. HBOT sessions are ${site.hbot.session}; ${site.hbot.screening} Initial QEEG testing is ${site.qeeg.initial} and includes extra assessments when needed (Creyos, questionnaires, QIK CPT, and others). Repeat QEEG is half-off at ${site.qeeg.repeat}. See the Cost page for a clear overview.`,
       },
       {
         q: "What is a superbill?",
-        a: "A superbill is a detailed receipt of services that you can submit to your insurance company for possible out-of-network reimbursement. We can provide this paperwork on request.",
+        a: "A superbill is a detailed receipt you can submit to your insurance company for possible reimbursement. It is available for some services, not all, and only on request.",
       },
       {
         q: "What is a Release of Information (ROI)?",
@@ -56,29 +53,54 @@ const faqGroups = [
     items: [
       {
         q: "Is this a teaching clinic?",
-        a: "Yes. We regularly include student interns, associate therapists, and technicians supervised by administrative therapists. That structure allows lower-rate neurofeedback options when trainees are available. Availability varies — ask the Front Desk.",
+        a: "Yes. We regularly include student interns, associate therapists, and technicians supervised by administrative therapists. Technician and intern sessions are $65–$130 depending on training, experience, and scope of work. Availability varies — ask the Front Desk.",
+      },
+      {
+        q: "Can neurofeedback help with ADHD, PTSD, anxiety, or depression?",
+        a: "Neurofeedback is used clinically for ADHD, PTSD, anxiety, depression, sleep concerns, and related regulation issues. Published AAPB field ratings treat ADHD and depression as efficacious and specific (5/5) and PTSD and anxiety as efficacious (4/5). Those are field ratings of the literature — not a promise of individual results. Care is individualized after assessment, including QEEG when appropriate. See About Neurofeedback for the evidence overview.",
+      },
+      {
+        q: "What is the difference between neurofeedback, QEEG, and psychotherapy?",
+        a: "Neurofeedback (EEG biofeedback) trains brain electrical activity in real time. A QEEG is a brain-map assessment that can guide protocols. Psychotherapy here includes talk therapy with EMDR and Internal Family Systems; it can stand alone or be combined with neurofeedback.",
       },
       {
         q: "What services do you offer?",
-        a: "Neurofeedback, QEEG brain mapping, talk therapy (including EMDR and Internal Family Systems), limited mild hyperbaric oxygen therapy (M-HBOT) with medical screening, and mentoring/consulting for clinicians. Visit the Services page for details.",
+        a: "Neurofeedback, QEEG brain mapping, talk therapy (including EMDR and Internal Family Systems), HBOT (a general wellness service only, medically screened and medically supervised), and mentoring/consulting for clinicians. Visit the Services page for details, or About Neurofeedback for evidence and how EEG training works.",
       },
     ],
   },
 ];
 
 function FaqPage() {
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqGroups.flatMap((group) =>
+      group.items.map((item) => ({
+        "@type": "Question",
+        name: item.q,
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: item.a,
+        },
+      })),
+    ),
+    url: `${SITE_ORIGIN}/faq`,
+  };
+
   return (
     <>
+      <JsonLd data={faqJsonLd} />
       <PageHero
         eyebrow="FAQ"
         title="Answers before you call"
-        description="Insurance, superbills, rates, releases, and how to start. When you are ready, call or text the Front Desk — no online booking."
+        description="Insurance, superbills, rates, releases, and how to start. For scheduling, call the AI Agent first."
       >
         <div className="flex flex-col gap-3 sm:flex-row">
           <Button asChild variant="phone" size="lg">
             <a href={site.phoneTel}>
-              <Phone className="h-4 w-4" aria-hidden />
-              Call or text {site.phone}
+              <Bot className="h-4 w-4" aria-hidden />
+              Call AI {site.phone}
             </a>
           </Button>
           <Button asChild variant="outline" size="lg">
@@ -94,73 +116,12 @@ function FaqPage() {
         <div className="container-abt max-w-3xl space-y-12">
           {faqGroups.map((group) => (
             <div key={group.title}>
-              <h2 className="font-display text-xl text-navy md:text-2xl">
-                {group.title}
-              </h2>
-              <Accordion
-                type="single"
-                collapsible
-                className="mt-4 space-y-3"
-              >
+              <h2 className="font-display text-2xl text-navy">{group.title}</h2>
+              <Accordion type="single" collapsible className="mt-4">
                 {group.items.map((item, i) => (
                   <AccordionItem key={item.q} value={`${group.title}-${i}`}>
                     <AccordionTrigger>{item.q}</AccordionTrigger>
-                    <AccordionContent>
-                      {item.a}
-                      {item.q.includes("rates") && (
-                        <span className="mt-3 block">
-                          <Link
-                            to="/cost"
-                            className="font-semibold text-green hover:underline"
-                          >
-                            View the Cost page
-                          </Link>
-                        </span>
-                      )}
-                      {item.q.includes("services") && (
-                        <span className="mt-3 block space-y-1">
-                          <Link
-                            to="/services"
-                            className="block font-semibold text-green hover:underline"
-                          >
-                            Browse all services
-                          </Link>
-                          <Link
-                            to="/services"
-                            hash="neurofeedback"
-                            hashScrollIntoView={{
-                              behavior: "smooth",
-                              block: "start",
-                            }}
-                            className="block text-sm font-semibold text-green hover:underline"
-                          >
-                            Neurofeedback
-                          </Link>
-                          <Link
-                            to="/services"
-                            hash="qeeg"
-                            hashScrollIntoView={{
-                              behavior: "smooth",
-                              block: "start",
-                            }}
-                            className="block text-sm font-semibold text-green hover:underline"
-                          >
-                            QEEG brain mapping
-                          </Link>
-                          <Link
-                            to="/services"
-                            hash="mhbot"
-                            hashScrollIntoView={{
-                              behavior: "smooth",
-                              block: "start",
-                            }}
-                            className="block text-sm font-semibold text-green hover:underline"
-                          >
-                            M-HBOT
-                          </Link>
-                        </span>
-                      )}
-                    </AccordionContent>
+                    <AccordionContent>{item.a}</AccordionContent>
                   </AccordionItem>
                 ))}
               </Accordion>
@@ -172,15 +133,13 @@ function FaqPage() {
       <section className="border-t border-border bg-surface section-pad">
         <div className="container-abt flex flex-col items-start justify-between gap-6 rounded-2xl border border-border bg-bg p-6 md:flex-row md:items-center md:p-8">
           <div>
-            <h2 className="font-display text-xl text-navy md:text-2xl">
-              Still have a question?
-            </h2>
+            <h2 className="font-display text-2xl text-navy">Still have a question?</h2>
             <p className="mt-2 max-w-xl text-sm text-muted">
-              Call or text {site.phone}. Live staff most business hours; AI
-              assists after hours — fully integrated with our EHR.
+              Call or text the AI Scheduling Agent at {site.phone}. Use the staff
+              line at {site.staff.phone} for QEEG or non-scheduling concerns.
             </p>
           </div>
-          <Button asChild variant="phone" size="lg" className="shrink-0">
+          <Button asChild variant="phone" size="lg">
             <a href={site.phoneTel}>
               <Phone className="h-4 w-4" aria-hidden />
               {site.phone}
@@ -189,7 +148,7 @@ function FaqPage() {
         </div>
       </section>
 
-      <CtaBand title="Ready to talk with Front Desk?" />
+      <CtaBand />
     </>
   );
 }

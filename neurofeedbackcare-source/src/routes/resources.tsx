@@ -4,19 +4,11 @@ import { PageHero } from "@/components/page-hero";
 import { CtaBand } from "@/components/cta-band";
 import { Button } from "@/components/ui/button";
 import { site } from "@/lib/site";
+import { pageHead, pagesSeo } from "@/lib/seo";
 
 export const Route = createFileRoute("/resources")({
   component: ResourcesPage,
-  head: () => ({
-    meta: [
-      { title: "Additional Resources | Alternative Behavioral Therapy" },
-      {
-        name: "description",
-        content:
-          "Neurofeedback and biofeedback resources: EEG Info, AAPB, ISNR, BCIA, BEE Medic, and QEEG Courses. Call Alternative Behavioral Therapy at (360) 553-1350.",
-      },
-    ],
-  }),
+  head: () => pageHead(pagesSeo.resources),
 });
 
 const resources = [
@@ -121,7 +113,7 @@ function ResourcesPage() {
                 href={c.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-5 rounded-2xl border border-border bg-surface p-6 shadow-card transition-all hover:-translate-y-0.5 hover:border-green/40 hover:shadow-md"
+                className="@container group flex flex-col items-center gap-4 rounded-2xl border border-border bg-surface p-6 text-center shadow-card transition-all hover:-translate-y-0.5 hover:border-green/40 hover:shadow-md @sm:flex-row @sm:items-start @sm:text-left"
               >
                 <div className="flex h-24 w-24 shrink-0 items-center justify-center rounded-xl bg-white p-2">
                   <img

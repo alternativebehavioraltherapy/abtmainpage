@@ -50,9 +50,9 @@ const trustPoints = [
   },
   {
     icon: ShieldCheck,
-    title: "Out-of-network · superbills",
+    title: "Out-of-network",
     detail:
-      "We do not bill insurance directly. Superbills are available so you can seek reimbursement from your plan.",
+      "We do not bill insurance directly. Superbills are available for some services, not all, so you may seek reimbursement from your plan.",
   },
   {
     icon: GraduationCap,
@@ -66,7 +66,7 @@ const heroHighlights = [
   "Neurofeedback & QEEG brain mapping",
   "Talk therapy with EMDR & IFS",
   "Teaching clinic with supervised trainees",
-  "Out-of-network · superbills available",
+  "Some services may be eligible for reimbursement",
   `Session rates ${site.rates.range} by provider`,
 ];
 
@@ -219,13 +219,13 @@ function HomePage() {
             </div>
           </div>
 
-          <div className="flex">
-            <div className="relative mx-auto w-full max-w-lg md:mx-0 md:max-w-none">
+          <div className="flex min-w-0">
+            <div className="relative mx-auto w-full min-w-0 max-w-lg md:mx-0 md:max-w-none">
               <div
                 className="absolute -inset-3 rounded-[2rem] bg-green-soft/60 blur-2xl"
                 aria-hidden
               />
-              <div className="relative flex h-full flex-col rounded-3xl border border-border bg-surface p-7 shadow-lg md:p-9">
+              <div className="relative flex h-full min-w-0 flex-col rounded-3xl border border-border bg-surface p-5 shadow-lg sm:p-7 md:p-8">
                 <p className="text-lg font-semibold uppercase tracking-wider text-green md:text-xl">
                   Why families choose us
                 </p>
@@ -256,27 +256,24 @@ function HomePage() {
                   })}
                 </ul>
 
-                <div className="mt-8 border-t border-border pt-6">
+                <div className="mt-8 w-full min-w-0 border-t border-border pt-6">
                   <a
                     href="https://beemedic.com/en/education"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex flex-col items-center gap-4 rounded-2xl bg-navy/95 px-4 py-6 transition-opacity hover:opacity-95 sm:flex-row sm:gap-6 sm:px-6 sm:py-5"
+                    className="flex w-full min-w-0 flex-col items-center gap-3 rounded-2xl bg-navy/95 px-4 py-5 text-center transition-opacity hover:opacity-95"
                   >
                     <img
                       src="/credentials/beemedic-partner.png"
-                      alt="BEE Medic Authorized Training Partner — AUTHORIZED · BEEMEDIC · TRAINING PARTNER"
-                      className="h-36 w-36 shrink-0 object-contain sm:h-40 sm:w-40 md:h-44 md:w-44"
-                      width={176}
-                      height={176}
+                      alt="BEE Medic Authorized Training Partner"
+                      className="h-44 w-44 shrink-0 object-contain sm:h-48 sm:w-48"
+                      width={192}
+                      height={192}
                       loading="lazy"
                       decoding="async"
                     />
-                    <div className="min-w-0 text-center sm:text-left">
-                      <p className="text-xs font-semibold uppercase tracking-wider text-green-bright">
-                        Partner credential
-                      </p>
-                      <p className="mt-1 font-display text-lg font-semibold text-white md:text-xl">
+                    <div className="w-full min-w-0">
+                      <p className="text-balance font-display text-lg font-semibold leading-snug text-white">
                         Authorized BEE Medic Training Partner
                       </p>
                       <p className="mt-1.5 text-sm leading-relaxed text-white/80">
@@ -446,11 +443,11 @@ function HomePage() {
               hash="talk-therapy"
             />
             <ServiceCard
-              title="Mild Hyperbaric Oxygen"
-              description="Limited, medically supervised M-HBOT (sit-up system, ~35% oxygen at 2 ATA). Not available to all applicants — inquire with the office."
+              title="HBOT"
+              description="General wellness only. Medically screened and medically supervised. Sessions are $95. The medical screening fee is set by the medical provider."
               icon={Wind}
               href="/services"
-              hash="mhbot"
+              hash="hbot"
             />
             <ServiceCard
               title="Mentoring & Courses"

@@ -35,6 +35,10 @@ export const site = {
     includes:
       "Initial testing includes additional assessments at no extra charge when needed — such as Creyos Cognitive Testing, questionnaires, QIK Continuous Performance Testing (CPT), and others depending on findings and client self-report. Repeat QEEG is half-off at $400.",
   },
+  hbot: {
+    session: "$95",
+    screening: "The medical screening fee is set by the medical provider.",
+  },
   onlineBooking: {
     href: "https://app.frontdesk.care/online-booking",
     label: "Online booking",
