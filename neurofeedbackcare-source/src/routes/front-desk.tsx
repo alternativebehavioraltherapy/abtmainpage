@@ -32,6 +32,16 @@ function FrontDeskPage() {
         description="Most appointments now go through our energy-efficient AI Scheduling Agent — faster, 24/7, and connected to our calendar. The personal staff line remains for special situations."
       >
         <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <Button asChild variant="secondary" size="xl" className="shadow-md">
+            <a
+              href={site.clientPortal.href}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <CalendarCheck className="h-5 w-5" aria-hidden />
+              Client Portal
+            </a>
+          </Button>
           <Button asChild variant="phone" size="xl" className="shadow-md">
             <a href={site.phoneTel}>
               <Bot className="h-5 w-5" aria-hidden />
@@ -51,8 +61,9 @@ function FrontDeskPage() {
           </Button>
         </div>
         <p className="mt-4 text-sm text-muted">
-          The AI line is the fastest path for listing, booking, canceling, or
-          rescheduling. Appointments are first come, first served.
+          Open the Client Portal to book and manage visits. The AI line is
+          still available for listing, booking, canceling, or rescheduling.
+          Appointments are first come, first served.
         </p>
       </PageHero>
 

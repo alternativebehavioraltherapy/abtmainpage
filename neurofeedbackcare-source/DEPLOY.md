@@ -18,7 +18,7 @@ You do **not** need GoDaddy Website Builder. Keep GoDaddy for **domain registrat
 - **Chat bubble (Front Desk AI):** optional additive channel. Embed is installed site-wide (practice id `7i5hlps1`). If the bubble does not appear on a host, assume vendor/service readiness or domain allowlist — **leave the embed code in place** until deliberately removed. See `src/lib/front-desk-chat-loader.ts`.
 - **Contact:** phone, SMS, `office@altbehtherapy.com` (mailto). No Message Us form backend.
 - **Assets:** only **owned** logos, clinic photos, team headshots, BCIA / QEEG Courses / BeeMedic credentials.
-- **Rates:** $65–$185 depending on provider; $65 when a supervised trainee is available.
+- **Rates:** $65–$195 depending on provider. Joshua Moore $195. Michelle Moore $175. Technicians in training and interns $65.
 
 ---
 

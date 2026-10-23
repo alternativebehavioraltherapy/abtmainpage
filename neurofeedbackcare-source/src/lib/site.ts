@@ -25,9 +25,11 @@ export const site = {
     full: "3000 SE 164th Ave Suite 108, Vancouver, WA 98683",
   },
   rates: {
-    range: "$65–$185",
-    technician: "$65–$130",
-    note: "Rates depend on the provider. Technicians and interns are $65–$130 depending on training, experience, and scope of work.",
+    range: "$65–$195",
+    joshua: "$195",
+    michelle: "$175",
+    technician: "$65",
+    note: "Rates depend on the provider. Joshua Moore is $195. Michelle Moore is $175. Technicians in training and interns are $65.",
   },
   qeeg: {
     initial: "$800",
@@ -43,6 +45,11 @@ export const site = {
     href: "https://app.frontdesk.care/online-booking",
     label: "Online booking",
     badge: "Beta",
+  },
+  /** Client scheduling portal — book and manage visits */
+  clientPortal: {
+    href: "https://neurofeedbackcare.clientportal.care/",
+    label: "Client Portal",
   },
   frontDesk: {
     headline: "Call the AI Scheduling Agent: (360) 800-4066",

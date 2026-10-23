@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Bot, Phone } from "lucide-react";
+import { Bot, CalendarCheck, Phone } from "lucide-react";
 import { site } from "@/lib/site";
 import { Button } from "@/components/ui/button";
 
@@ -25,7 +25,22 @@ export function CtaBand({
         <p className="mt-4 text-base leading-relaxed text-white/80 md:text-lg">
           {description}
         </p>
-        <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
+        <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row sm:flex-wrap">
+          <Button
+            asChild
+            variant="outline"
+            size="xl"
+            className="border-white bg-white text-navy hover:bg-green-soft hover:text-navy"
+          >
+            <a
+              href={site.clientPortal.href}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <CalendarCheck className="h-5 w-5" aria-hidden />
+              Client Portal
+            </a>
+          </Button>
           <Button asChild variant="phone" size="xl">
             <a href={site.phoneTel}>
               <Bot className="h-5 w-5" aria-hidden />

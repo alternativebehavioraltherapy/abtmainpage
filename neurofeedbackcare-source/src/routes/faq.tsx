@@ -36,7 +36,7 @@ const faqGroups = [
       },
       {
         q: "What are your rates?",
-        a: `Rates range ${site.rates.range} depending on the credentials and experience of the provider and current availability. Technicians and interns are ${site.rates.technician} depending on training, experience, and scope of work. HBOT sessions are ${site.hbot.session}; ${site.hbot.screening} Initial QEEG testing is ${site.qeeg.initial} and includes extra assessments when needed (Creyos, questionnaires, QIK CPT, and others). Repeat QEEG is half-off at ${site.qeeg.repeat}. See the Cost page for a clear overview.`,
+        a: `Rates range ${site.rates.range} depending on the provider. Joshua Moore is ${site.rates.joshua}. Michelle Moore is ${site.rates.michelle}. Technicians in training and interns are ${site.rates.technician}. HBOT sessions are ${site.hbot.session}; ${site.hbot.screening} Initial QEEG testing is ${site.qeeg.initial} and includes extra assessments when needed (Creyos, questionnaires, QIK CPT, and others). Repeat QEEG is half-off at ${site.qeeg.repeat}. See the Cost page for a clear overview.`,
       },
       {
         q: "What is a superbill?",
@@ -53,7 +53,7 @@ const faqGroups = [
     items: [
       {
         q: "Is this a teaching clinic?",
-        a: "Yes. We regularly include student interns, associate therapists, and technicians supervised by administrative therapists. Technician and intern sessions are $65–$130 depending on training, experience, and scope of work. Availability varies — ask the Front Desk.",
+        a: "Yes. We regularly include student interns and technicians in training, supervised by administrative therapists. Those sessions are $65. Availability varies — ask the Front Desk.",
       },
       {
         q: "Can neurofeedback help with ADHD, PTSD, anxiety, or depression?",

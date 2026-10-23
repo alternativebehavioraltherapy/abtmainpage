@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Bot, Mail, MapPin, Phone } from "lucide-react";
+import { Bot, CalendarCheck, Mail, MapPin, Phone } from "lucide-react";
 import { navItems, site } from "@/lib/site";
 
 export function Footer() {
@@ -121,6 +121,15 @@ export function Footer() {
               for QEEG, obstacles, or non-scheduling questions.
             </p>
             <div className="mt-5 flex flex-col gap-2">
+              <a
+                href={site.clientPortal.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-white px-5 text-sm font-semibold text-navy transition-colors hover:bg-green-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-bright focus-visible:ring-offset-2 focus-visible:ring-offset-navy"
+              >
+                <CalendarCheck className="h-4 w-4" aria-hidden />
+                Client Portal
+              </a>
               <a
                 href={site.phoneTel}
                 className="inline-flex min-h-11 items-center justify-center rounded-full bg-green px-5 text-sm font-semibold text-white transition-colors hover:bg-green-bright focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green-bright focus-visible:ring-offset-2 focus-visible:ring-offset-navy"

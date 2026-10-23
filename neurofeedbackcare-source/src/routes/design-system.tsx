@@ -152,7 +152,7 @@ function DesignSystemPage() {
                 name="Sample Clinician"
                 credentials="MA, LMHC"
                 role="Example role"
-                rate="$65–$185"
+                rate="$65–$195"
                 bio="Team cards support photo or initials fallback with warm professional copy."
               />
             </div>

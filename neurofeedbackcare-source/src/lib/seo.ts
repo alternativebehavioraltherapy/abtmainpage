@@ -69,7 +69,7 @@ export const pagesSeo = {
     title:
       "Neurofeedback Cost & QEEG Fees ($800 / $400) | Vancouver, WA",
     description:
-      "Session rates $65–$185. Technicians and interns $65–$130. HBOT is a general wellness service at $95; medical screening fee is set by the medical provider. Initial QEEG $800 includes Creyos, QIK CPT, and questionnaires when needed; repeat QEEG $400. Some services, not all, may be eligible for reimbursement.",
+      "Session rates $65–$195. Joshua Moore $195. Michelle Moore $175. Technicians in training and interns $65. HBOT is a general wellness service at $95; medical screening fee is set by the medical provider. Initial QEEG $800 includes Creyos, QIK CPT, and questionnaires when needed; repeat QEEG $400. Some services, not all, may be eligible for reimbursement.",
     path: "/cost",
   },
   faq: {

@@ -15,6 +15,7 @@ import {
   BadgeCheck,
   CheckCircle2,
   Bot,
+  CalendarCheck,
 } from "lucide-react";
 import { ServiceCard } from "@/components/service-card";
 import { CtaBand } from "@/components/cta-band";
@@ -58,7 +59,7 @@ const trustPoints = [
     icon: GraduationCap,
     title: "Teaching clinic",
     detail:
-      "Supervised technicians and interns — sessions $65–$130 depending on training and scope",
+      "Supervised technicians in training and interns — sessions $65",
   },
 ];
 
@@ -130,6 +131,16 @@ function HomePage() {
             </p>
 
             <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-center">
+              <Button asChild variant="secondary" size="xl" className="shadow-md">
+                <a
+                  href={site.clientPortal.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <CalendarCheck className="h-5 w-5" aria-hidden />
+                  Client Portal
+                </a>
+              </Button>
               <Button asChild variant="phone" size="xl" className="shadow-md">
                 <a href={site.phoneTel}>
                   <Bot className="h-5 w-5" aria-hidden />
@@ -144,19 +155,25 @@ function HomePage() {
               </Button>
             </div>
             <p className="mt-3 max-w-lg text-sm leading-relaxed text-muted md:text-base">
-              Scheduling has changed. Use the energy-efficient{" "}
-              <span className="font-semibold text-navy">
-                AI Scheduling Agent
-              </span>{" "}
-              at {site.phone} for most appointments. Staff line{" "}
-              {site.staff.phone} for QEEG, obstacles, or other concerns.{" "}
+              Our scheduling system has changed. Use the{" "}
+              <a
+                href={site.clientPortal.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-semibold text-green hover:underline"
+              >
+                Client Portal
+              </a>{" "}
+              to book and manage visits, or call the AI Scheduling Agent at{" "}
+              {site.phone}. Staff line {site.staff.phone} for QEEG or other
+              concerns.{" "}
               <Link
                 to="/front-desk"
                 className="font-semibold text-green hover:underline"
               >
                 More information
               </Link>
-              . Online booking is a beta option if you prefer a calendar.
+              .
             </p>
 
             <p className="mt-7 max-w-xl text-lg leading-relaxed text-ink-soft md:text-xl md:leading-relaxed">
@@ -369,10 +386,9 @@ function HomePage() {
             </div>
             <p className="mt-3 text-sm leading-relaxed text-white/80 md:text-base">
               We regularly train student interns, associate therapists, and
-              technicians under clinical supervision. Technician and intern
-              sessions are {site.rates.technician} depending on training,
-              experience, and scope of work. Availability varies — ask the
-              Front Desk.
+              technicians under clinical supervision. Technicians in training and
+              intern sessions are {site.rates.technician}. Availability varies
+              — ask the Front Desk.
             </p>
           </div>
           <div className="flex shrink-0 flex-col gap-3 sm:flex-row">
@@ -462,11 +478,11 @@ function HomePage() {
                   Next step
                 </p>
                 <h3 className="mt-3 font-display text-xl text-navy">
-                  Call the AI Scheduling Agent
+                  Book in the Client Portal
                 </h3>
                 <p className="mt-2 text-sm leading-relaxed text-muted">
-                  First come, first served. Call {site.phone} for most
-                  bookings. Staff line for QEEG or obstacles.{" "}
+                  Our scheduling system has changed. Open the portal to book
+                  and manage visits, or call {site.phone}.{" "}
                   <Link
                     to="/front-desk"
                     className="font-semibold text-green hover:underline"
@@ -476,14 +492,21 @@ function HomePage() {
                 </p>
               </div>
               <div className="mt-6 flex flex-col gap-2">
-                <Button asChild variant="primary" className="w-full">
-                  <a href={site.phoneTel}>
-                    <Bot className="h-4 w-4" aria-hidden />
-                    {site.phone}
+                <Button asChild variant="secondary" className="w-full">
+                  <a
+                    href={site.clientPortal.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <CalendarCheck className="h-4 w-4" aria-hidden />
+                    Client Portal
                   </a>
                 </Button>
                 <Button asChild variant="ghost" className="w-full">
-                  <Link to="/front-desk">Front Desk details</Link>
+                  <a href={site.phoneTel}>
+                    <Bot className="h-4 w-4" aria-hidden />
+                    Call AI {site.phone}
+                  </a>
                 </Button>
               </div>
             </article>
@@ -510,6 +533,7 @@ function HomePage() {
               <ul className="mt-5 space-y-2.5 text-sm text-ink-soft">
                 {[
                   `AI Scheduling Agent ${site.phone} — primary`,
+                  "Client Portal for booking and managing visits",
                   `Staff line ${site.staff.phone} — QEEG, obstacles, other concerns`,
                   "First come, first served by availability",
                   "Online booking is a beta option",
@@ -524,6 +548,16 @@ function HomePage() {
                 ))}
               </ul>
               <div className="mt-7 flex flex-wrap gap-3">
+                <Button asChild variant="secondary" size="lg">
+                  <a
+                    href={site.clientPortal.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <CalendarCheck className="h-4 w-4" aria-hidden />
+                    Client Portal
+                  </a>
+                </Button>
                 <Button asChild variant="primary" size="lg">
                   <Link to="/front-desk">Front Desk</Link>
                 </Button>

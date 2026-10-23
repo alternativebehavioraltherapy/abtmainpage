@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { Bot, Phone } from "lucide-react";
+import { Bot, CalendarCheck, Phone } from "lucide-react";
 import { Header } from "./header";
 import { Footer } from "./footer";
 import { HashScroll } from "@/components/hash-scroll";
@@ -36,6 +36,20 @@ export function SiteShell({ children }: { children: ReactNode }) {
         style={{ paddingBottom: "max(0.625rem, env(safe-area-inset-bottom))" }}
       >
         <div className="flex gap-2">
+          <a
+            href={site.clientPortal.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex min-h-12 flex-1 flex-col items-center justify-center rounded-full bg-navy px-2 text-white shadow-sm active:scale-[0.98]"
+          >
+            <span className="inline-flex items-center gap-1 text-sm font-semibold">
+              <CalendarCheck className="h-4 w-4" aria-hidden />
+              Portal
+            </span>
+            <span className="text-[11px] font-medium leading-none opacity-95">
+              Schedule
+            </span>
+          </a>
           <a
             href={site.phoneTel}
             className="flex min-h-12 flex-1 flex-col items-center justify-center rounded-full bg-green px-2 text-white shadow-sm active:scale-[0.98]"

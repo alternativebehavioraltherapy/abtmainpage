@@ -25,7 +25,7 @@ function CostPage() {
       <PageHero
         eyebrow="Cost"
         title="Clear rates, no surprises"
-        description={`Session fees range ${site.rates.range} depending on the provider. Technicians and interns are ${site.rates.technician}. Initial QEEG is ${site.qeeg.initial}; repeats are ${site.qeeg.repeat}. We are out-of-network. Superbills are available for some services, not all.`}
+        description={`Session fees range ${site.rates.range} depending on the provider. Joshua Moore is ${site.rates.joshua}. Michelle Moore is ${site.rates.michelle}. Technicians in training and interns are ${site.rates.technician}. Initial QEEG is ${site.qeeg.initial}; repeats are ${site.qeeg.repeat}. We are out-of-network. Superbills are available for some services, not all.`}
       >
         <div className="flex flex-col gap-3 sm:flex-row">
           <Button asChild variant="phone" size="lg">
@@ -57,25 +57,24 @@ function CostPage() {
             <div className="divide-y divide-border">
               {[
                 {
-                  title: "Technicians & interns",
+                  title: "Technicians in training & interns",
                   detail:
-                    "Supervised teaching-clinic providers. Rate depends on training, experience, and scope of work. Availability varies.",
+                    "Supervised teaching-clinic providers. Availability varies.",
                   rate: site.rates.technician,
                   href: "/the-team" as const,
                   hash: "technicians",
                   linkLabel: "Meet technicians & interns",
                 },
                 {
-                  title: "Licensed clinicians",
-                  detail:
-                    "Most counselors fall in the mid-to-upper range based on credentials and experience (for example Michelle Moore at $165).",
-                  rate: "Within $65–$185",
+                  title: "Michelle Moore, MA, LMHC",
+                  detail: "Licensed mental health counselor.",
+                  rate: site.rates.michelle,
                 },
                 {
-                  title: "Senior / BCN-level care",
+                  title: "Joshua Moore, MA, LMHC, BCN",
                   detail:
-                    "Including Joshua Moore, MA, LMHC, BCN and comparable seniority.",
-                  rate: "Up to $185",
+                    "Licensed mental health counselor and Board Certified in Neurofeedback.",
+                  rate: site.rates.joshua,
                 },
               ].map((row) => (
                 <div
@@ -207,7 +206,7 @@ function CostPage() {
                 Teaching clinic
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-muted">
-                Technician and intern rates ({site.rates.technician}) exist
+                Technicians in training and interns are {site.rates.technician}{" "}
                 because supervised trainees help deliver care. Ask whether that
                 option is open right now.
               </p>

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Bot, Menu, X } from "lucide-react";
+import { Bot, CalendarCheck, Menu, X } from "lucide-react";
 import { navItems, site } from "@/lib/site";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -63,9 +63,34 @@ export function Header() {
               </Link>
             );
           })}
+          <a
+            href={site.clientPortal.href}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="ml-1 inline-flex shrink-0 items-center gap-1 rounded-full bg-navy px-2.5 py-2 text-[13px] font-semibold text-white hover:bg-navy-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green focus-visible:ring-offset-2"
+          >
+            <CalendarCheck className="h-3.5 w-3.5" aria-hidden />
+            Portal
+          </a>
         </nav>
 
         <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
+          <Button
+            asChild
+            variant="secondary"
+            size="sm"
+            className="hidden sm:inline-flex lg:hidden"
+          >
+            <a
+              href={site.clientPortal.href}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <CalendarCheck className="h-4 w-4" aria-hidden />
+              <span className="hidden xl:inline">Client Portal</span>
+              <span className="xl:hidden">Portal</span>
+            </a>
+          </Button>
           <Button
             asChild
             variant="phone"
@@ -142,6 +167,15 @@ export function Header() {
                 </Link>
               );
             })}
+            <a
+              href={site.clientPortal.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-2 flex min-h-12 items-center justify-center gap-2 rounded-full bg-navy px-4 py-3.5 text-base font-semibold text-white"
+            >
+              <CalendarCheck className="h-4 w-4" aria-hidden />
+              Client Portal
+            </a>
             <a
               href={site.phoneTel}
               className="mt-2 flex min-h-12 items-center justify-center gap-2 rounded-full bg-green px-4 py-3.5 text-base font-semibold text-white"
