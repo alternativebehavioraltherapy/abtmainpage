@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Bot, CalendarCheck, Menu, X } from "lucide-react";
+import { Bot, Menu, X } from "lucide-react";
 import { navItems, site } from "@/lib/site";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
@@ -24,7 +24,7 @@ export function Header() {
 
   return (
     <header className="border-b border-border/80 bg-surface/95 backdrop-blur-md">
-      <div className="container-abt flex h-16 items-center justify-between gap-3 md:h-[4.5rem]">
+      <div className="mx-auto flex h-16 w-full max-w-[76rem] items-center gap-2 px-4 md:h-[4.25rem] md:gap-3 md:px-5 xl:px-6">
         <Link
           to="/"
           className="flex min-w-0 shrink-0 items-center rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green focus-visible:ring-offset-2"
@@ -33,13 +33,13 @@ export function Header() {
           <img
             src="/brand/logo-horizontal-color.jpg"
             alt={site.name}
-            className="h-8 w-auto max-w-[min(52vw,220px)] object-contain object-left sm:h-9 sm:max-w-[260px] md:h-10 md:max-w-[300px]"
+            className="h-8 w-auto max-w-[min(48vw,200px)] object-contain object-left sm:h-9 sm:max-w-[220px] lg:h-9 lg:max-w-[200px] xl:h-10 xl:max-w-[240px]"
             height={40}
           />
         </Link>
 
         <nav
-          className="hidden min-w-0 flex-1 items-center gap-0.5 overflow-x-auto lg:flex"
+          className="hidden min-w-0 flex-1 items-center justify-end gap-0.5 overflow-x-auto whitespace-nowrap lg:flex xl:justify-center xl:gap-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
           aria-label="Primary"
         >
           {navItems.map((item) => {
@@ -53,7 +53,7 @@ export function Header() {
                 to={item.to}
                 aria-current={active ? "page" : undefined}
                 className={cn(
-                  "rounded-full px-2.5 py-2 text-[13px] font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green focus-visible:ring-offset-2",
+                  "shrink-0 whitespace-nowrap rounded-full px-2 py-1.5 text-[13px] font-medium leading-none transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green focus-visible:ring-offset-2 xl:px-2.5 xl:py-2 xl:text-sm",
                   active
                     ? "bg-green-soft text-navy"
                     : "text-ink-soft hover:bg-green-soft/60 hover:text-navy",
@@ -63,34 +63,9 @@ export function Header() {
               </Link>
             );
           })}
-          <a
-            href={site.clientPortal.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="ml-1 inline-flex shrink-0 items-center gap-1 rounded-full bg-navy px-2.5 py-2 text-[13px] font-semibold text-white hover:bg-navy-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-green focus-visible:ring-offset-2"
-          >
-            <CalendarCheck className="h-3.5 w-3.5" aria-hidden />
-            Portal
-          </a>
         </nav>
 
         <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
-          <Button
-            asChild
-            variant="secondary"
-            size="sm"
-            className="hidden sm:inline-flex lg:hidden"
-          >
-            <a
-              href={site.clientPortal.href}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <CalendarCheck className="h-4 w-4" aria-hidden />
-              <span className="hidden xl:inline">Client Portal</span>
-              <span className="xl:hidden">Portal</span>
-            </a>
-          </Button>
           <Button
             asChild
             variant="phone"
@@ -102,7 +77,8 @@ export function Header() {
               aria-label={`Call AI Scheduling Agent ${site.phone}`}
             >
               <Bot className="h-4 w-4" aria-hidden />
-              <span className="hidden lg:inline">AI Agent · </span>
+              <span className="hidden 2xl:inline">AI Agent · </span>
+              <span className="hidden lg:inline 2xl:hidden">AI </span>
               {site.phone}
             </a>
           </Button>
@@ -167,15 +143,6 @@ export function Header() {
                 </Link>
               );
             })}
-            <a
-              href={site.clientPortal.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-2 flex min-h-12 items-center justify-center gap-2 rounded-full bg-navy px-4 py-3.5 text-base font-semibold text-white"
-            >
-              <CalendarCheck className="h-4 w-4" aria-hidden />
-              Client Portal
-            </a>
             <a
               href={site.phoneTel}
               className="mt-2 flex min-h-12 items-center justify-center gap-2 rounded-full bg-green px-4 py-3.5 text-base font-semibold text-white"

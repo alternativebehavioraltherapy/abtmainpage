@@ -4,7 +4,7 @@ import { site } from "@/lib/site";
 export function SchedulingBanner() {
   return (
     <div className="border-b border-green/25 bg-navy text-white">
-      <div className="container-abt flex items-center justify-between gap-3 py-2">
+      <div className="mx-auto flex w-full max-w-[76rem] items-center justify-between gap-3 px-4 py-2 md:px-5 xl:px-6">
         <p className="min-w-0 text-sm leading-snug">
           <span className="font-semibold text-green-bright">
             Our scheduling system has changed.
