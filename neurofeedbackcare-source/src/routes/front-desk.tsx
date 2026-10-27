@@ -63,6 +63,7 @@ function FrontDeskPage() {
         <p className="mt-4 text-sm text-muted">
           Open the Client Portal to book and manage visits. The AI line is
           still available for listing, booking, canceling, or rescheduling.
+          HBOT is not available on the AI scheduler — use the staff line.
           Appointments are first come, first served.
         </p>
       </PageHero>
@@ -152,6 +153,7 @@ function FrontDeskPage() {
                 {[
                   "Significant scheduling obstacles the AI cannot resolve",
                   "Scheduling QEEGs (brain mapping)",
+                  "HBOT — not available through the AI scheduler",
                   "Non-scheduling questions (billing, clinical, general office)",
                   "If no openings appear on the AI line — availability is first come, first served",
                 ].map((item) => (
@@ -228,7 +230,7 @@ function FrontDeskPage() {
             <p className="mt-4 text-base leading-relaxed text-muted">
               Scheduling options depend on current availability. Times are
               offered on a first-come, first-served basis. If the AI Agent
-              shows no suitable openings — or you need a QEEG or a more
+              shows no suitable openings — or you need a QEEG, HBOT, or a more
               complex change — contact the staff line at {site.staff.phone}.
             </p>
           </div>
@@ -359,7 +361,7 @@ function FrontDeskPage() {
               </li>
               <li className="flex gap-2.5">
                 <ShieldCheck className="mt-0.5 h-4 w-4 shrink-0 text-green" />
-                QEEG mapping is scheduled on the staff line.
+                QEEG and HBOT are scheduled on the staff line, not the AI scheduler.
               </li>
             </ul>
           </div>

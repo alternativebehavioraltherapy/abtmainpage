@@ -118,7 +118,8 @@ export function Footer() {
             </h2>
             <p className="mt-4 text-sm leading-relaxed text-white/80">
               Start with the AI Scheduling Agent for faster booking. Staff line
-              for QEEG, obstacles, or non-scheduling questions.
+              for QEEG, HBOT, obstacles, or non-scheduling questions. HBOT is
+              not booked through the AI scheduler.
             </p>
             <div className="mt-5 flex flex-col gap-2">
               <a

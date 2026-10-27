@@ -55,7 +55,7 @@ export const pagesSeo = {
   frontDesk: {
     title: "Schedule Neurofeedback | AI Front Desk Vancouver, WA",
     description:
-      "Book neurofeedback and counseling with our AI Scheduling Agent at (360) 800-4066. Staff line (360) 553-1350 for QEEG and special situations. First come, first served.",
+      "Book neurofeedback and counseling with our AI Scheduling Agent at (360) 800-4066. Staff line (360) 553-1350 for QEEG, HBOT, and special situations. First come, first served.",
     path: "/front-desk",
   },
   team: {

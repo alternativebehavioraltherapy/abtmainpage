@@ -2,27 +2,20 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   Mail,
   MapPin,
-  MessageSquare,
   Phone,
   ArrowRight,
   Clock,
+  Bot,
+  ExternalLink,
 } from "lucide-react";
 import { PageHero } from "@/components/page-hero";
 import { Button } from "@/components/ui/button";
 import { site } from "@/lib/site";
+import { pageHead, pagesSeo } from "@/lib/seo";
 
 export const Route = createFileRoute("/contact")({
   component: ContactPage,
-  head: () => ({
-    meta: [
-      { title: "Contact Us | Alternative Behavioral Therapy" },
-      {
-        name: "description",
-        content:
-          "Call or text (360) 553-1350. Alternative Behavioral Therapy, 3000 SE 164th Ave Suite 108, Vancouver, WA. Email office@altbehtherapy.com.",
-      },
-    ],
-  }),
+  head: () => pageHead(pagesSeo.contact),
 });
 
 function ContactPage() {
@@ -30,20 +23,20 @@ function ContactPage() {
     <>
       <PageHero
         eyebrow="Contact"
-        title="Call or text first — we’re ready to help"
-        description="Phone and text are the fastest ways to reach our Front Desk. Live receptionist most business hours; AI assists after hours or when staff cannot answer."
+        title="Reach the right line"
+        description="Most scheduling goes through our energy-efficient AI Scheduling Agent. The staff line is for QEEG, HBOT, obstacles, and non-scheduling concerns."
       >
         <div className="flex flex-col gap-3 sm:flex-row">
           <Button asChild variant="phone" size="xl" className="shadow-md">
             <a href={site.phoneTel}>
-              <Phone className="h-5 w-5" aria-hidden />
-              Call {site.phone}
+              <Bot className="h-5 w-5" aria-hidden />
+              Call AI {site.phone}
             </a>
           </Button>
           <Button asChild variant="outline" size="xl">
-            <a href={site.phoneSms}>
-              <MessageSquare className="h-5 w-5" aria-hidden />
-              Text {site.phone}
+            <a href={site.staff.tel}>
+              <Phone className="h-5 w-5" aria-hidden />
+              Staff {site.staff.phone}
             </a>
           </Button>
         </div>
@@ -54,43 +47,47 @@ function ContactPage() {
           <div className="space-y-4 lg:col-span-3">
             <a
               href={site.phoneTel}
-              className="flex items-start gap-4 rounded-2xl border border-border bg-surface p-6 shadow-card transition-colors hover:border-green/40"
+              className="flex items-start gap-4 rounded-2xl border-2 border-green/40 bg-green-soft/40 p-6 shadow-card transition-colors hover:border-green"
             >
               <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-green text-white">
-                <Phone className="h-5 w-5" aria-hidden />
+                <Bot className="h-5 w-5" aria-hidden />
               </div>
               <div>
                 <p className="text-xs font-semibold uppercase tracking-wider text-green">
-                  Primary
+                  Primary · AI Scheduling Agent
                 </p>
-                <h2 className="font-display text-xl text-navy">Call</h2>
+                <h2 className="font-display text-xl text-navy">
+                  Call or text
+                </h2>
                 <p className="mt-1 text-lg font-semibold text-green">
                   {site.phone}
                 </p>
                 <p className="mt-1 text-sm text-muted">
-                  Live receptionist during most business hours
+                  Fastest path for listing, booking, canceling, or rescheduling
                 </p>
               </div>
             </a>
 
             <a
-              href={site.phoneSms}
+              href={site.staff.tel}
               className="flex items-start gap-4 rounded-2xl border border-border bg-surface p-6 shadow-card transition-colors hover:border-green/40"
             >
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-green-soft text-green">
-                <MessageSquare className="h-5 w-5" aria-hidden />
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-navy text-white">
+                <Phone className="h-5 w-5" aria-hidden />
               </div>
               <div>
-                <p className="text-xs font-semibold uppercase tracking-wider text-green">
-                  Primary
+                <p className="text-xs font-semibold uppercase tracking-wider text-navy">
+                  Staff line
                 </p>
-                <h2 className="font-display text-xl text-navy">Text</h2>
-                <p className="mt-1 text-lg font-semibold text-green">
-                  {site.phone}
+                <h2 className="font-display text-xl text-navy">
+                  Personal / office
+                </h2>
+                <p className="mt-1 text-lg font-semibold text-navy">
+                  {site.staff.phone}
                 </p>
                 <p className="mt-1 text-sm text-muted">
-                  AI-assisted Front Desk when staff are unavailable — fully EHR
-                  integrated
+                  QEEG scheduling, significant obstacles, or non-scheduling
+                  questions. May have notable delays.
                 </p>
               </div>
             </a>
@@ -117,8 +114,8 @@ function ContactPage() {
             <div className="flex items-start gap-3 rounded-2xl border border-border bg-bg px-5 py-4 text-sm text-muted">
               <Clock className="mt-0.5 h-4 w-4 shrink-0 text-green" aria-hidden />
               <p>
-                For appointments, cancellations, and reschedules, prefer call or
-                text so Front Desk (live or AI) can help immediately.{" "}
+                Times are first come, first served. If the AI Agent has no
+                openings, call the staff line.{" "}
                 <Link
                   to="/front-desk"
                   className="font-semibold text-green hover:underline"
@@ -144,7 +141,7 @@ function ContactPage() {
               <p className="mt-5 text-sm text-white/65">Fax: {site.fax}</p>
               <div className="mt-auto flex flex-col gap-3 pt-8">
                 <Button asChild variant="phone" size="lg" className="w-full">
-                  <a href={site.phoneTel}>Call Front Desk</a>
+                  <a href={site.phoneTel}>Call AI Agent</a>
                 </Button>
                 <Button
                   asChild
@@ -190,19 +187,29 @@ function ContactPage() {
 
       <section className="border-t border-border bg-green-soft/30 py-12">
         <div className="container-abt max-w-2xl text-center">
-          <h2 className="font-display text-2xl text-navy md:text-3xl">
-            No online booking form
+          <p className="text-xs font-semibold uppercase tracking-wider text-green">
+            Beta
+          </p>
+          <h2 className="mt-2 font-display text-2xl text-navy md:text-3xl">
+            Online booking is optional
           </h2>
           <p className="mt-3 text-muted">
-            Reach us by call or text at {site.phone}. That is the intentional
-            path for scheduling and changes as we transition EHR systems.
+            Calling the AI Agent at {site.phone} is still the easiest path. Online
+            booking is a beta product if you prefer a visual calendar.
           </p>
           <div className="mt-6 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <Button asChild variant="phone" size="lg">
-              <a href={site.phoneTel}>Call now</a>
+              <a href={site.phoneTel}>Call AI now</a>
             </Button>
             <Button asChild variant="outline" size="lg">
-              <a href={site.phoneSms}>Send a text</a>
+              <a
+                href={site.onlineBooking.href}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Online booking
+                <ExternalLink className="h-4 w-4" aria-hidden />
+              </a>
             </Button>
           </div>
         </div>

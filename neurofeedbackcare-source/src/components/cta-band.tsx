@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 
 export function CtaBand({
   title = "Ready to take the next step?",
-  description = "Call or text our AI Scheduling Agent at (360) 800-4066. Appointments are first come, first served. Use the staff line for QEEG, scheduling obstacles, or non-scheduling concerns.",
+  description = "Call or text our AI Scheduling Agent at (360) 800-4066. Appointments are first come, first served. Use the staff line for QEEG, HBOT, scheduling obstacles, or non-scheduling concerns.",
 }: {
   title?: string;
   description?: string;

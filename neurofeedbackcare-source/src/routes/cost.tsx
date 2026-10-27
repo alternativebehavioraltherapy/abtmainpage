@@ -168,6 +168,7 @@ function CostPage() {
               <h2 className="font-display text-xl text-navy">HBOT</h2>
               <p className="mt-1 text-sm text-muted">
                 General wellness only. Medically screened and medically supervised.
+                Not booked through the AI scheduler — call the staff line.
               </p>
             </div>
             <div className="divide-y divide-border">

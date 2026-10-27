@@ -24,11 +24,11 @@ const faqGroups = [
     items: [
       {
         q: "How do I schedule or change an appointment?",
-        a: `Call or text the energy-efficient AI Scheduling Agent at ${site.phone}. That is the fastest path for listing, booking, canceling, or rescheduling. Appointments are first come, first served by current availability. If there are no openings — or you need QEEG scheduling, a significant obstacle resolved, or a non-scheduling question — use the staff line at ${site.staff.phone} (may have notable delays). Online booking is a beta option; we still recommend the AI line.`,
+        a: `Call or text the energy-efficient AI Scheduling Agent at ${site.phone}. That is the fastest path for listing, booking, canceling, or rescheduling. Appointments are first come, first served by current availability. If there are no openings — or you need QEEG or HBOT scheduling, a significant obstacle resolved, or a non-scheduling question — use the staff line at ${site.staff.phone} (may have notable delays). HBOT cannot be booked through the AI scheduler. Online booking is a beta option; we still recommend the AI line.`,
       },
       {
         q: "What is the difference between the AI line and the staff line?",
-        a: `The AI Scheduling Agent (${site.phone}) handles most scheduling 24/7. The staff line (${site.staff.phone}) still reaches people in the office and should be used for QEEG scheduling, significant scheduling obstacles, or non-scheduling concerns.`,
+        a: `The AI Scheduling Agent (${site.phone}) handles most scheduling 24/7. The staff line (${site.staff.phone}) still reaches people in the office and should be used for QEEG scheduling, HBOT (not available on the AI scheduler), significant scheduling obstacles, or non-scheduling concerns.`,
       },
       {
         q: "Do you accept insurance?",

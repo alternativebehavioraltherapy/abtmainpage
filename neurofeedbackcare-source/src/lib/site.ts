@@ -53,7 +53,7 @@ export const site = {
   },
   frontDesk: {
     headline: "Call the AI Scheduling Agent: (360) 800-4066",
-    body: "For most scheduling, call or text our AI Scheduling Agent at (360) 800-4066. This line is in beta — calling is the easiest path. Appointments are first come, first served by current availability. Use the staff line at (360) 553-1350 for significant scheduling obstacles, QEEG scheduling, or non-scheduling concerns — staff may face notable delays.",
+    body: "For most scheduling, call or text our AI Scheduling Agent at (360) 800-4066. This line is in beta — calling is the easiest path. Appointments are first come, first served by current availability. Use the staff line at (360) 553-1350 for significant scheduling obstacles, QEEG or HBOT scheduling, or non-scheduling concerns — staff may face notable delays. HBOT cannot be booked through the AI scheduler.",
   },
   /** Front Desk AI chat booking widget (book.frontdesk.care) */
   frontDeskChat: {

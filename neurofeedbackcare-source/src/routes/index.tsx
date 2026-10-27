@@ -165,8 +165,8 @@ function HomePage() {
                 Client Portal
               </a>{" "}
               to book and manage visits, or call the AI Scheduling Agent at{" "}
-              {site.phone}. Staff line {site.staff.phone} for QEEG or other
-              concerns.{" "}
+              {site.phone}. Staff line {site.staff.phone} for QEEG, HBOT, or
+              other concerns.{" "}
               <Link
                 to="/front-desk"
                 className="font-semibold text-green hover:underline"
@@ -534,7 +534,7 @@ function HomePage() {
                 {[
                   `AI Scheduling Agent ${site.phone} — primary`,
                   "Client Portal for booking and managing visits",
-                  `Staff line ${site.staff.phone} — QEEG, obstacles, other concerns`,
+                  `Staff line ${site.staff.phone} — QEEG, HBOT, obstacles`,
                   "First come, first served by availability",
                   "Online booking is a beta option",
                 ].map((item) => (

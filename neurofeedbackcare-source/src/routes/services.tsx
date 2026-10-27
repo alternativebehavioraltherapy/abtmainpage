@@ -89,6 +89,7 @@ const services = [
     summary: "General wellness only. Medically screened and medically supervised.",
     body: [
       "HBOT is a general wellness service only. It is medically screened and medically supervised.",
+      "HBOT is not booked through the AI scheduler. Call the staff line to schedule it.",
       `Sessions are ${site.hbot.session}. ${site.hbot.screening}`,
     ],
     points: [
@@ -341,7 +342,7 @@ function ServicesPage() {
               A consultation is required before intake and ongoing services.
               Calling the AI Scheduling Agent is the easiest path. Online
               booking is available as a beta option. Use the staff line for
-              QEEG scheduling, scheduling obstacles, or non-scheduling questions.
+              QEEG or HBOT scheduling, scheduling obstacles, or non-scheduling questions.
             </p>
             <ul className="mt-5 space-y-2 text-sm text-ink-soft">
               <li className="flex gap-2">
