@@ -55,9 +55,10 @@ const credentials = [
     description:
       "Board Certified in Neurofeedback (BCN) — certification through the Biofeedback Certification International Alliance.",
     href: "https://www.bcia.org",
-    img: "/credentials/bcia-badge.png",
-    imgClass: "h-20 w-20 object-contain",
-    alt: "BCIA Biofeedback Certification International Alliance seal",
+    img: "/credentials/bcia-bcn-gold.gif",
+    imgClass: "h-28 w-28 object-contain",
+    boxClass: "h-32 w-32",
+    alt: "Board Certified in Neurofeedback — Biofeedback Certification International Alliance seal",
   },
   {
     name: "BEE Medic",
@@ -66,6 +67,7 @@ const credentials = [
     href: "https://beemedic.com/en/education",
     img: "/credentials/beemedic-partner.png",
     imgClass: "h-20 w-20 object-contain",
+    boxClass: "h-24 w-24",
     alt: "BEE Medic Authorized Training Partner badge",
   },
   {
@@ -75,6 +77,7 @@ const credentials = [
     href: "http://www.qeegcourses.com",
     img: "/credentials/qeeg-courses.png",
     imgClass: "h-14 w-auto max-w-[180px] object-contain",
+    boxClass: "h-24 w-24",
     alt: "QEEG Courses logo",
   },
 ];
@@ -95,17 +98,16 @@ function ResourcesPage() {
             </a>
           </Button>
           <Button asChild variant="outline" size="lg">
-            <Link to="/services">
+            <a href="/services">
               Our services
               <ArrowRight className="h-4 w-4" aria-hidden />
-            </Link>
+            </a>
           </Button>
         </div>
       </PageHero>
 
       <section className="section-pad">
         <div className="container-abt">
-          {/* Credential / partner marks */}
           <div className="mb-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {credentials.map((c) => (
               <a
@@ -115,7 +117,7 @@ function ResourcesPage() {
                 rel="noopener noreferrer"
                 className="@container group flex flex-col items-center gap-4 rounded-2xl border border-border bg-surface p-6 text-center shadow-card transition-all hover:-translate-y-0.5 hover:border-green/40 hover:shadow-md @sm:flex-row @sm:items-start @sm:text-left"
               >
-                <div className="flex h-24 w-24 shrink-0 items-center justify-center rounded-xl bg-white p-2">
+                <div className={`flex shrink-0 items-center justify-center rounded-xl bg-white p-2 ${c.boxClass}`}>
                   <img
                     src={c.img}
                     alt={c.alt}
