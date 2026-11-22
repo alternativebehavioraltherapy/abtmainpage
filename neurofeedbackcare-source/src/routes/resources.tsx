@@ -55,7 +55,7 @@ const credentials = [
     description:
       "Board Certified in Neurofeedback (BCN) — certification through the Biofeedback Certification International Alliance.",
     href: "https://www.bcia.org",
-    img: "/credentials/bcia-bcn-gold.gif",
+    img: "/credentials/bcia-badge.png",
     imgClass: "h-28 w-28 object-contain",
     boxClass: "h-32 w-32",
     alt: "Board Certified in Neurofeedback — Biofeedback Certification International Alliance seal",
