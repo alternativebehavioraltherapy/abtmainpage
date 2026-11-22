@@ -98,10 +98,10 @@ function ResourcesPage() {
             </a>
           </Button>
           <Button asChild variant="outline" size="lg">
-            <a href="/services">
+            <Link to="/services">
               Our services
               <ArrowRight className="h-4 w-4" aria-hidden />
-            </a>
+            </Link>
           </Button>
         </div>
       </PageHero>
