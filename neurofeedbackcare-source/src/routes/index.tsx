@@ -16,6 +16,7 @@ import {
   CheckCircle2,
   Bot,
   CalendarCheck,
+  ExternalLink,
 } from "lucide-react";
 import { ServiceCard } from "@/components/service-card";
 import { CtaBand } from "@/components/cta-band";
@@ -60,6 +61,33 @@ const trustPoints = [
     title: "Teaching clinic",
     detail:
       "Supervised technicians in training and interns — sessions $65",
+  },
+];
+
+const homeCredentials = [
+  {
+    name: "Board Certified in Neurofeedback",
+    detail:
+      "Joshua Moore, MA, LMHC, holds BCN certification through the Biofeedback Certification International Alliance — an independent standard for clinicians who practice neurofeedback.",
+    href: "https://www.bcia.org",
+    img: "/credentials/bcia-bcn-gold.gif",
+    alt: "Board Certified in Neurofeedback — Biofeedback Certification International Alliance seal",
+  },
+  {
+    name: "Amen Clinics Brain Health Coach",
+    detail:
+      "Certified in the Amen Clinics Brain Health Coach program. That training adds a practical brain-health framework — habits, mood, focus, and everyday function — alongside our clinical work.",
+    href: "https://www.amenclinics.com/",
+    img: "/credentials/amen-brain-health-coach.png",
+    alt: "Amen Clinics Brain Health Coach certification badge",
+  },
+  {
+    name: "BEE Medic Training Partner",
+    detail:
+      "Acknowledged by a major neurofeedback equipment and education provider — supporting our clinical teaching and training work.",
+    href: "https://beemedic.com/en/education",
+    img: "/credentials/beemedic-partner.png",
+    alt: "BEE Medic Authorized Training Partner badge",
   },
 ];
 
@@ -272,38 +300,66 @@ function HomePage() {
                     );
                   })}
                 </ul>
-
-                <div className="mt-8 w-full min-w-0 border-t border-border pt-6">
-                  <a
-                    href="https://beemedic.com/en/education"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex w-full min-w-0 flex-col items-center gap-3 rounded-2xl bg-navy/95 px-4 py-5 text-center transition-opacity hover:opacity-95"
-                  >
-                    <img
-                      src="/credentials/beemedic-partner.png"
-                      alt="BEE Medic Authorized Training Partner"
-                      className="h-44 w-44 shrink-0 object-contain sm:h-48 sm:w-48"
-                      width={192}
-                      height={192}
-                      loading="lazy"
-                      decoding="async"
-                    />
-                    <div className="w-full min-w-0">
-                      <p className="text-balance font-display text-lg font-semibold leading-snug text-white">
-                        Authorized BEE Medic Training Partner
-                      </p>
-                      <p className="mt-1.5 text-sm leading-relaxed text-white/80">
-                        Acknowledged by a major neurofeedback equipment and
-                        education provider — supporting our clinical teaching
-                        and training work.
-                      </p>
-                    </div>
-                  </a>
-                </div>
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      <section
+        className="border-b border-border bg-surface"
+        aria-labelledby="credentials-heading"
+      >
+        <div className="container-abt py-10 md:py-14">
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="text-sm font-semibold uppercase tracking-wider text-green">
+              Credentials
+            </p>
+            <h2
+              id="credentials-heading"
+              className="mt-2 font-display text-3xl text-navy text-balance md:text-4xl"
+            >
+              Certifications behind the care
+            </h2>
+            <p className="mt-3 text-sm leading-relaxed text-muted md:text-base">
+              Independent credentials clients and referring clinicians can
+              recognize at a glance.
+            </p>
+          </div>
+          <ul className="mt-8 grid gap-5 md:grid-cols-3">
+            {homeCredentials.map((item) => (
+              <li key={item.name} className="min-w-0">
+                <a
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex h-full flex-col items-center rounded-2xl border border-border bg-bg p-5 text-center shadow-card transition-all hover:-translate-y-0.5 hover:border-green/40 hover:shadow-md sm:p-6"
+                >
+                  <div className="flex h-44 w-full items-center justify-center rounded-xl bg-white p-3 sm:h-48">
+                    <img
+                      src={item.img}
+                      alt={item.alt}
+                      className="max-h-full max-w-full object-contain"
+                      width={320}
+                      height={320}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </div>
+                  <h3 className="mt-5 font-display text-xl leading-snug text-navy group-hover:text-green">
+                    {item.name}
+                  </h3>
+                  <p className="mt-2 flex-1 text-sm leading-relaxed text-muted">
+                    {item.detail}
+                  </p>
+                  <p className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-navy group-hover:text-green">
+                    Learn more
+                    <ExternalLink className="h-3.5 w-3.5" aria-hidden />
+                  </p>
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 

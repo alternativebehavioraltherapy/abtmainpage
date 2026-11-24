@@ -55,9 +55,9 @@ const credentials = [
     description:
       "Board Certified in Neurofeedback (BCN) — certification through the Biofeedback Certification International Alliance.",
     href: "https://www.bcia.org",
-    img: "/credentials/bcia-badge.png",
-    imgClass: "h-28 w-28 object-contain",
-    boxClass: "h-32 w-32",
+    img: "/credentials/bcia-bcn-gold.gif",
+    imgClass: "h-full w-full object-contain",
+    boxClass: "h-44 w-44 sm:h-48 sm:w-48",
     alt: "Board Certified in Neurofeedback — Biofeedback Certification International Alliance seal",
   },
   {
@@ -66,8 +66,8 @@ const credentials = [
       "Authorized Training Partner — recognized by a major neurofeedback equipment and education provider.",
     href: "https://beemedic.com/en/education",
     img: "/credentials/beemedic-partner.png",
-    imgClass: "h-20 w-20 object-contain",
-    boxClass: "h-24 w-24",
+    imgClass: "h-full w-full object-contain",
+    boxClass: "h-44 w-44 sm:h-48 sm:w-48",
     alt: "BEE Medic Authorized Training Partner badge",
   },
   {
@@ -76,8 +76,8 @@ const credentials = [
       "Training and workshop pathways for QEEG and neurofeedback practitioners.",
     href: "http://www.qeegcourses.com",
     img: "/credentials/qeeg-courses.png",
-    imgClass: "h-14 w-auto max-w-[180px] object-contain",
-    boxClass: "h-24 w-24",
+    imgClass: "h-full w-full object-contain",
+    boxClass: "h-44 w-44 sm:h-48 sm:w-48",
     alt: "QEEG Courses logo",
   },
 ];
@@ -115,7 +115,7 @@ function ResourcesPage() {
                 href={c.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="@container group flex flex-col items-center gap-4 rounded-2xl border border-border bg-surface p-6 text-center shadow-card transition-all hover:-translate-y-0.5 hover:border-green/40 hover:shadow-md @sm:flex-row @sm:items-start @sm:text-left"
+                className="group flex h-full flex-col items-center gap-4 rounded-2xl border border-border bg-surface p-6 text-center shadow-card transition-all hover:-translate-y-0.5 hover:border-green/40 hover:shadow-md"
               >
                 <div className={`flex shrink-0 items-center justify-center rounded-xl bg-white p-2 ${c.boxClass}`}>
                   <img
@@ -127,15 +127,13 @@ function ResourcesPage() {
                   />
                 </div>
                 <div className="min-w-0">
-                  <div className="flex items-start justify-between gap-2">
-                    <h2 className="font-display text-xl text-navy group-hover:text-green">
-                      {c.name}
-                    </h2>
+                  <h2 className="font-display text-xl text-navy group-hover:text-green">
+                    {c.name}
                     <ExternalLink
-                      className="mt-1 h-4 w-4 shrink-0 text-muted"
+                      className="ml-1.5 inline h-4 w-4 align-text-bottom text-muted"
                       aria-hidden
                     />
-                  </div>
+                  </h2>
                   <p className="mt-1.5 text-sm leading-relaxed text-muted">
                     {c.description}
                   </p>
